@@ -1,0 +1,17 @@
+.about-me {
+  max-width: 1140px;
+  margin: 70px 14px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me {
+    margin: 90px 50px 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me {
+    margin: 110px auto 0;
+  }
+}
+

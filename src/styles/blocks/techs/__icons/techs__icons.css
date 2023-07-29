@@ -1,0 +1,13 @@
+.techs__icons {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 53px 0;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .techs__icons {
+    margin: 83px 0 0;
+  }
+}
