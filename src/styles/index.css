@@ -51,3 +51,9 @@
 @import url(./blocks/footer/__links/footer__links.css);
 @import url(./blocks/footer/__link/footer__link.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);
+@import url(./blocks/search-form/search-form.css);
+@import url(./blocks/search-form/__btn/search-form__btn.css);
+@import url(./blocks/search-form/__field/search-form__field.css);
+@import url(./blocks/search-form/__input/search-form__input.css);
+
+@import url(./blocks/preloader/preloader.css);
