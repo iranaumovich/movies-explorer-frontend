@@ -15,7 +15,7 @@ export default function Footer() {
               Яндекс.Практикум
             </a>
             <a
-              href="https://practicum.yandex.ru"
+              href="https://github.com"
               target="blank"
               className="footer__link"
             >
