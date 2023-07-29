@@ -1,0 +1,8 @@
+.timeline__small-part {
+  color: #A0A0A0;
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

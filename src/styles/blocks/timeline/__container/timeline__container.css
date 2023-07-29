@@ -1,0 +1,12 @@
+.timeline__container {
+  display: flex;
+  height: 35px;
+  font-size: 11px;
+}
+
+@media screen and (min-width: 768px) {
+  .timeline__container {
+    height: 35px;
+    font-size: 14px;
+  }
+}
