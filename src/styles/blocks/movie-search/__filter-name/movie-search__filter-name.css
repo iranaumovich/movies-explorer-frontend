@@ -1,0 +1,11 @@
+.movie-search__filter-name {
+  margin: 0;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-search__filter-name {
+    font-size: 13px;
+  }
+}
