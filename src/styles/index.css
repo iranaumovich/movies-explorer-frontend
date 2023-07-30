@@ -55,5 +55,22 @@
 @import url(./blocks/search-form/__btn/search-form__btn.css);
 @import url(./blocks/search-form/__field/search-form__field.css);
 @import url(./blocks/search-form/__input/search-form__input.css);
+@import url(./blocks/toggle/toggle.css);
+@import url(./blocks/toggle/__input/toggle__input.css);
+@import url(./blocks/toggle/__slider/toggle__slider.css);
+@import url(./blocks/toggle/__slider/_active/toggle__slider_active.css);
+@import url(./blocks/movie-search/movie-search.css);
+@import url(./blocks/movie-search/__filter-container/movie-search__filter-container.css);
+@import url(./blocks/movie-search/__filter-name/movie-search__filter-name.css);
+@import url(./blocks/movies-cardlist/movies-cardlist.css);
+@import url(./blocks/movies-cardlist/__grid/movies-cardlist__grid.css);
+@import url(./blocks/movies-cardlist/__button/movies-cardlist__button.css);
+@import url(./blocks/movies-card/movies-card.css);
+@import url(./blocks/movies-card/__header/movies-card__header.css);
+@import url(./blocks/movies-card/__title/movies-card__title.css);
+@import url(./blocks/movies-card/__time/movies-card__time.css);
+@import url(./blocks/favorite-button/favorite-button.css);
+@import url(./blocks/movies-card/__image-container/movies-card__image-container.css);
+@import url(./blocks/movies-card/__image/movies-card__image.css);
 
 @import url(./blocks/preloader/preloader.css);

@@ -1,11 +1,13 @@
 import Preloader from "../components/Preloader";
-import SearchForm from "../components/SearchForm";
+import MovieSearch from "../components/MovieSearch";
+import MoviesCardList from "../components/MoviesCardList";
 
 export default function Movies() {
   return (
-    <div>
-      <SearchForm />
+    <>
+      <MovieSearch />
+      <MoviesCardList />
       {/* <Preloader /> */}
-    </div>
+    </>
   );
 }
