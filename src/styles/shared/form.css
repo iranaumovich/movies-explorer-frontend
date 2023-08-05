@@ -1,0 +1,14 @@
+.form {
+  min-height: 468px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    min-height: 380px;
+    margin-bottom: 16px;
+  }
+}

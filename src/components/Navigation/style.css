@@ -1,0 +1,120 @@
+.navigation__menu {
+  display: flex;
+}
+
+.navigation__account {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  position: relative;
+}
+
+.navigation__account-text {
+  color: #000000;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.navigation__account-icon {
+  display: block;
+  width: 26px;
+  height: 30px;
+  background-image: url('../../images/account-icon.svg');
+  background-color: #F9F9F9;
+  background-repeat: no-repeat;
+  background-size: 11.5px 14px;
+  background-position: center center;
+  border-radius: 4px;
+}
+
+.navigation__account-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #000000;
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation {
+    padding-left: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navigation__link {
+    font-size: 13px;
+    line-height: 18px;
+    padding-right: 16px;
+  }
+
+  .navigation__link_active {
+    font-weight: 500;
+  }
+  
+  .navigation__link:last-child {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .navigation {
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .navigation__menu {
+    flex-direction: column;
+    padding-top: 159px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .navigation__link {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .navigation__link_active::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -4px;
+    right: 0;
+    border-bottom: solid 2px #000000;
+  }
+
+  .navigation__account {
+    padding-bottom: 92px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .navigation__account {
+    padding-bottom: 48px;
+  }
+
+  .navigation__menu {
+    flex-direction: column;
+    padding-top: 144px;
+    gap: 24px;
+  }
+}
+
