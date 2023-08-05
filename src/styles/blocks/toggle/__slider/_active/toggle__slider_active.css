@@ -1,7 +1,0 @@
-.toggle__slider_active {
-  background-color: #2BE080;
-}
-
-.toggle__slider_active:before {
-  transform: translateX(16px);
-}

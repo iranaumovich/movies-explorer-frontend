@@ -1,0 +1,155 @@
+.header {
+  background-color: #5C5C5C;
+  min-height: 74px;
+}
+
+.header_light-theme {
+  background-color: #ffffff;
+}
+
+.header__container {
+  max-width: 1140px;
+  padding: 18px 18px 0 18px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header__logged-out {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__logged-account_type_desktop {
+  display: none;
+}
+
+.header__logged-account_type_mobile {
+  width: 21px;
+  height: 21px;
+  position: relative;
+  margin-left: auto;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.header__button {
+  background-color: #2BE080;
+  border: none;
+  border-radius: 3px;
+  width: 54px;
+  height: 26px;
+  color: #000000;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.header__button:hover {
+  background-color: hsl(148, 74%, 52%, 0.8);
+}
+
+.header__register-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 500;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+
+.header__logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.header__burger, .header__burger::after, .header__burger::before {
+  height: 3px;
+  width: 21px;
+  position: absolute;
+    background: #000000;
+    margin: 0 auto;
+}
+
+.header__burger {
+  top: 9px;
+}
+
+.header__burger::after, .header__burger::before{
+  content: '';
+}
+
+.header__burger::after{
+  bottom: 9px;
+}
+
+.header__burger::before{
+  top: 9px;
+}
+
+.header__burger_active, .header__burger_active::after, .header__burger_active::before {
+  transition: transform 0.25s ease;
+}
+
+.header__burger_active::before{
+  transform: rotate(-45deg);
+	transform-origin: -2px 0px;
+}
+
+.header__burger_active {
+  background-color: transparent;
+}
+
+.header__burger_active::after{
+  transform: rotate(45deg);
+	transform-origin: -2px 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__logged-out {
+    gap: 30px;
+  }
+
+  .header__button {
+    width: 76px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .header__register-link {
+    font-size: 12px;
+  }
+
+  .header__logo-container {
+    margin-left: 30px;
+  }
+
+  .header__logged-account_type_mobile {
+    margin-right: 22px;
+  }
+
+  .header__burger, .header__burger::after, .header__burger::before {
+    height: 3px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__logo-container {
+    margin-left: 0;
+  }
+
+  .header__logged-account_type_desktop {
+    flex: 1;
+    display: block;
+  }
+
+  .header__logged-account_type_mobile {
+    display: none;
+  }
+}
