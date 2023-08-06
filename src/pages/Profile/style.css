@@ -1,6 +1,6 @@
 .profile {
   display: flex;
-  height: calc(100vh - 148px);
+  height: calc(100vh - 74px);
 }
 
 .profile__container {
@@ -39,7 +39,11 @@
 
 .profile__item:last-child {
   padding-bottom: 0;
-  border-bottom: 0;
+  border-bottom: none;
+}
+
+.profile__item:focus-within {
+  border-color: black;
 }
 
 .profile__lable {
@@ -85,16 +89,16 @@
   margin-top: auto;
 }
 
-.profile__account:hover {
-  opacity: 0.7;
-}
-
 .profile__edit {
   border: none;
   background-color: transparent;
   padding: 0;
   font-size: 12px;
   cursor: pointer;
+}
+
+.profile__edit:hover {
+  opacity: 0.7;
 }
 
 .profile__log-out {

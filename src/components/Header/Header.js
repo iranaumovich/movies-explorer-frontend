@@ -15,7 +15,7 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
         </div>
 
         <div
-          className="header__logged-account header__logged-account_type_mobile"
+          className="header__logged-account header__logged-account_type_mobile link"
           onClick={onBurgerClick}
         >
           <span
@@ -46,7 +46,7 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
       <div className="header__container">
         <Link to="/">
           <img
-            className="header__logo"
+            className="header__logo link"
             src={movieLogo}
             alt="Логотип сервиса по поиску фильмов"
           />

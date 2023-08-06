@@ -11,7 +11,11 @@ function Register() {
         <div className="entrance__container">
           <div className="entrance__header">
             <Link to="/">
-              <img className="entrance__logo" alt="Логотип сайта" src={Logo} />
+              <img
+                className="entrance__logo link"
+                alt="Логотип сайта"
+                src={Logo}
+              />
             </Link>
             <h1 className="entrance__title">Добро пожаловать!</h1>
           </div>

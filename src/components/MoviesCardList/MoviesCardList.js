@@ -11,7 +11,7 @@ function MoviesCardList() {
         {/*<Preloader />*/}
         <div className="movies-cardlist__grid">
           <MoviesCard />
-          <MoviesCard />
+          <MoviesCard saved />
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
