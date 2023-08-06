@@ -5,6 +5,7 @@
 .footer__container {
   max-width: 1140px;
   padding: 79px 30px 20px;
+  margin: auto;
 }
 
 .footer__copyright {
@@ -46,8 +47,8 @@
 
 @media screen and (min-width: 768px) {
   .footer__container {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .footer__copyright {
@@ -80,6 +81,5 @@
   .footer__container {
     padding-left: 0;
     padding-right: 0;
-    margin: auto;
   }
 }

@@ -9,12 +9,14 @@ import Page from "./components/Page/Page";
 import Error from "./components/Error/Error";
 
 import { useState } from "react";
+import ScrollToHashElement from "./ScrollToHashElement";
 
 function App() {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="page">
+      <ScrollToHashElement />
       <Routes>
         <Route
           path="/"
@@ -53,7 +55,7 @@ function App() {
         />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/error" element={<Error />} />
+        <Route path="/404" element={<Error />} />
       </Routes>
     </div>
   );

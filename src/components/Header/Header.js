@@ -29,14 +29,14 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
   } else {
     container = (
       <>
-        <div className="header__logged-out">
+        <nav className="header__logged-out">
           <Link to="/signup" className="header__register-link link">
             Регистрация
           </Link>
-          <button className="header__button" onClick={onLogin}>
+          <button className="header__button" type="button" onClick={onLogin}>
             Войти
           </button>
-        </div>
+        </nav>
       </>
     );
   }

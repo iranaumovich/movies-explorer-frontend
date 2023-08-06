@@ -5,6 +5,7 @@
 .techs__container {
   max-width: 1140px;
   padding: 70px 18px;
+  margin: auto;
 }
 
 .techs__heading {
@@ -17,14 +18,17 @@
 }
 
 .techs__icons {
+  padding: 0;
+  margin: 50px 53px 0;
   display: flex;
   flex-wrap: wrap;
-  margin: 50px 53px 0;
   justify-content: center;
   gap: 10px;
 }
 
 .techs__icon {
+  list-style: none;
+  margin: 0;
   width: 84px;
   height: 57px;
   background-color: #E8E8E8;
@@ -74,8 +78,7 @@
 
 @media screen and (min-width: 1280px) {
   .techs__container {
-    padding: 100px;
-    margin: auto;
+    padding: 100px 0;
   }
 
   .techs__heading {

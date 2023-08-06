@@ -85,8 +85,16 @@
   margin-top: auto;
 }
 
+.profile__account:hover {
+  opacity: 0.7;
+}
+
 .profile__edit {
+  border: none;
+  background-color: transparent;
+  padding: 0;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .profile__log-out {

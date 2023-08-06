@@ -1,7 +1,7 @@
 .about-project {
   max-width: 1140px;
-  margin: 70px 18px 0;
-  padding-bottom: 70px;
+  padding: 70px 18px 70px;
+  margin: auto;
 }
 
 .table {
@@ -33,6 +33,7 @@
 }
 
 .timeline__big-part {
+  margin: 0;
   color: #A0A0A0;
   flex-grow: 4;
   display: flex;
@@ -46,6 +47,7 @@
 }
 
 .timeline__small-part {
+  margin: 0;
   color: #A0A0A0;
   flex-grow: 1;
   text-align: center;
@@ -61,8 +63,7 @@
 
 @media screen and (min-width: 768px) {
   .about-project {
-    margin: 90px 50px 0;
-    padding-bottom: 90px;
+    padding: 90px 50px 90px;
   }
 
   .table {
@@ -84,8 +85,7 @@
 
 @media screen and (min-width: 1280px) {
   .about-project {
-    margin: 110px auto 0;
-    padding-bottom: 110px;
+    padding: 110px 0 110px;
   }
 
   .table {

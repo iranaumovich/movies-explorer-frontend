@@ -12,6 +12,6 @@
   text-rendering: optimizeLegibility;
 }
 
-.page_noscroll {
+.body_noscroll {
   overflow: hidden;
 }

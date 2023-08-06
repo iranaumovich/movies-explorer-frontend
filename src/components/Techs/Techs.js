@@ -3,7 +3,7 @@ import "./style.css";
 
 function Techs() {
   return (
-    <section className="techs">
+    <section id="techs" className="techs">
       <div className="techs__container">
         <h2 className="title">Технологии</h2>
         <h3 className="techs__heading">7 технологий</h3>
@@ -11,15 +11,15 @@ function Techs() {
           На курсе веб-разработки мы освоили технологии, которые применили в
           дипломном проекте.
         </p>
-        <div className="techs__icons">
-          <div className="techs__icon">HTML</div>
-          <div className="techs__icon">CSS</div>
-          <div className="techs__icon">JS</div>
-          <div className="techs__icon">React</div>
-          <div className="techs__icon">Git</div>
-          <div className="techs__icon">Express.js</div>
-          <div className="techs__icon">mongoDB</div>
-        </div>
+        <ul className="techs__icons">
+          <li className="techs__icon">HTML</li>
+          <li className="techs__icon">CSS</li>
+          <li className="techs__icon">JS</li>
+          <li className="techs__icon">React</li>
+          <li className="techs__icon">Git</li>
+          <li className="techs__icon">Express.js</li>
+          <li className="techs__icon">mongoDB</li>
+        </ul>
       </div>
     </section>
   );

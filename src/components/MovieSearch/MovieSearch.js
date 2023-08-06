@@ -5,13 +5,15 @@ import "./style.css";
 
 function MovieSearch() {
   return (
-    <div className="movie-search">
-      <SearchForm />
-      <div className="movie-search__filter-container">
-        <p className="movie-search__filter-name">Короткометражки</p>
-        <FilterCheckbox />
-      </div>
-    </div>
+    <section>
+      <form className="movie-search">
+        <SearchForm />
+        <div className="movie-search__filter-container">
+          <p className="movie-search__filter-name">Короткометражки</p>
+          <FilterCheckbox />
+        </div>
+      </form>
+    </section>
   );
 }
 

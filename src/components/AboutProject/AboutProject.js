@@ -1,9 +1,10 @@
 import React from "react";
+
 import "./style.css";
 
 function AboutProject() {
   return (
-    <section className="about-project">
+    <section id="about-project" className="about-project">
       <h2 className="title">О проекте</h2>
 
       <article className="table">
@@ -27,16 +28,14 @@ function AboutProject() {
 
       <div className="timeline">
         <div className="timeline__container">
-          <div className="timeline__small-part timeline__small-part_green">
+          <p className="timeline__small-part timeline__small-part_green">
             1 неделя
-          </div>
-          <div className="timeline__big-part timeline__big-part_grey">
-            4 недели
-          </div>
+          </p>
+          <p className="timeline__big-part timeline__big-part_grey">4 недели</p>
         </div>
         <div className="timeline__container">
-          <div className="timeline__small-part">Back-end</div>
-          <div className="timeline__big-part">Front-end</div>
+          <p className="timeline__small-part">Back-end</p>
+          <p className="timeline__big-part">Front-end</p>
         </div>
       </div>
     </section>

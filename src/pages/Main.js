@@ -7,12 +7,12 @@ import AboutMe from "../components/AboutMe/AboutMe";
 
 export default function Main() {
   return (
-    <div className="main">
+    <main className="main">
       <Promo />
       <NavTab />
       <AboutProject />
       <Techs />
       <AboutMe />
-    </div>
+    </main>
   );
 }

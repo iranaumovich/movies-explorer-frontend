@@ -5,10 +5,10 @@ import Footer from "../components/Footer/Footer";
 
 export default function SavedMovies() {
   return (
-    <>
+    <main>
       <MovieSearch />
       <MoviesCardList />
       {/* <Preloader /> */}
-    </>
+    </main>
   );
 }
