@@ -6,10 +6,10 @@ function SearchForm() {
     <div className="search-form">
       <div className="search-form__field">
         <input className="search-form__input" placeholder="Фильм" />
+        <button type="submit" className="search-form__btn">
+          Найти
+        </button>
       </div>
-      <button type="submit" className="search-form__btn">
-        Найти
-      </button>
     </div>
   );
 }
