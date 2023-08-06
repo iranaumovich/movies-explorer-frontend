@@ -21,12 +21,21 @@ function Register() {
           </div>
           <form className="form">
             <div className="form__items">
-              <TextField type="text" id="name" name="name" lableText="Имя" />
+              <TextField
+                type="text"
+                id="name"
+                name="name"
+                lableText="Имя"
+                placeholder="Введите имя"
+                minLength="2"
+                maxLength="30"
+              />
               <TextField
                 type="email"
                 id="email"
                 name="email"
                 lableText="E-mail"
+                placeholder="Введите email"
                 isRight
               />
               <TextField
@@ -34,6 +43,9 @@ function Register() {
                 id="password"
                 name="password"
                 lableText="Пароль"
+                placeholder="Введите пароль"
+                minLength="2"
+                maxLength="30"
                 isError
               />
             </div>
