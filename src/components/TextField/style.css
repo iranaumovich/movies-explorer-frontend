@@ -20,7 +20,7 @@
   display: block;
   font-size: 10px;
   color: #A0A0A0;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .text-field__control {
@@ -34,7 +34,7 @@
 
 .text-field__control:focus {
   outline: none;
-  border-bottom: 1px solid rgba(170, 170, 170, 1);
+  background-color: rgba(43, 224, 128, 0.05);
 }
 
 .text-field__control_type_right {

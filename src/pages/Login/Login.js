@@ -27,12 +27,14 @@ function Login() {
                 name="email"
                 lableText="E-mail"
                 isRight
+                placeholder="Введите email"
               />
               <TextField
                 type="password"
                 id="password"
                 name="password"
                 lableText="Пароль"
+                placeholder="Введите пароль"
                 isError
               />
             </div>

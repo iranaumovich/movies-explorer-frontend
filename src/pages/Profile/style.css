@@ -43,7 +43,7 @@
 }
 
 .profile__item:focus-within {
-  border-color: black;
+  background: rgba(43, 224, 128, 0.05);
 }
 
 .profile__lable {
@@ -53,6 +53,7 @@
 .profile__input {
   width: 100%;
   text-align: right;
+  background: none;
   border: none;
 }
 

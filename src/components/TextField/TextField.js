@@ -1,7 +1,17 @@
 import React from "react";
 import "./style.css";
 
-function TextField({ type, id, name, lableText, isError, isRight }) {
+function TextField({
+  type,
+  id,
+  name,
+  lableText,
+  isError,
+  isRight,
+  placeholder,
+  minLength,
+  maxLength,
+}) {
   return (
     <div className="text-field">
       <label className="text-field__label" for={id}>
@@ -14,6 +24,9 @@ function TextField({ type, id, name, lableText, isError, isRight }) {
         type={type}
         id={id}
         name={name}
+        placeholder={placeholder}
+        minLength={minLength}
+        maxLength={maxLength}
         required
       />
       <span
