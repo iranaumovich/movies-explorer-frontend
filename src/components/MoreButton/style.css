@@ -12,3 +12,7 @@
   padding: 0;
   cursor: pointer;
 }
+
+.more-button:hover {
+  opacity: 0.7;
+}
