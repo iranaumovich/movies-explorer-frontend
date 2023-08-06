@@ -2,11 +2,17 @@
   display: flex;
 }
 
-.navigation__account {
+.navigation__link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.navigation__account-link {
   display: flex;
   align-items: center;
   gap: 17px;
-  position: relative;
+  text-decoration: none;
+  color: #000000;
 }
 
 .navigation__account-text {
@@ -27,19 +33,6 @@
   background-size: 11.5px 14px;
   background-position: center center;
   border-radius: 4px;
-}
-
-.navigation__account-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.navigation__link {
-  text-decoration: none;
-  color: #000000;
 }
 
 @media screen and (min-width: 1280px) {

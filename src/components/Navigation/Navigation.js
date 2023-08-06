@@ -35,12 +35,11 @@ function Navigation({ isMenuOpen }) {
           Сохранённые фильмы
         </Link>
       </div>
-      <div className="navigation__account link">
-        <Link to="/profile" className="navigation__account-link">
-          {" "}
+      <div className="navigation__account">
+        <Link to="/profile" className="navigation__account-link link">
+          <p className="navigation__account-text">Аккаунт</p>
+          <span className="navigation__account-icon"></span>
         </Link>
-        <p className="navigation__account-text">Аккаунт</p>
-        <span className="navigation__account-icon"></span>
       </div>
     </nav>
   );
