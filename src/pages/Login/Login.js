@@ -6,7 +6,7 @@ import FormButton from "../../components/FormButton/FormButton";
 
 function Login() {
   return (
-    <main>
+    <main className="main">
       <section className="entrance">
         <div className="entrance__container">
           <div className="entrance__header">

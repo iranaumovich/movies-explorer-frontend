@@ -6,7 +6,7 @@ import "./style.css";
 
 function Profile({ isEditing, onEditClick }) {
   return (
-    <main>
+    <main className="main">
       <section className="profile">
         <div className="profile__container">
           <h1 className="profile__title">Привет, Виталий!</h1>

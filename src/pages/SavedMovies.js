@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer";
 
 export default function SavedMovies() {
   return (
-    <main>
+    <main className="main">
       <MovieSearch />
       <MoviesCardList />
       {/* <Preloader /> */}

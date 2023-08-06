@@ -1,6 +1,6 @@
 .profile {
   display: flex;
-  height: calc(100% - 74px);
+  height: calc(100vh - 148px);
 }
 
 .profile__container {

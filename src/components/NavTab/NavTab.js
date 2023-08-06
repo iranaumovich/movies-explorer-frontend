@@ -11,17 +11,25 @@ function NavTab() {
 
   return (
     <nav className="navbar">
-      <ul className="navbar__container">
-        <li className="navbar__link link" onClick={handleClick}>
-          <Link to="#about-project">О проекте</Link>
-        </li>
-        <li className="navbar__link link" onClick={handleClick}>
-          <Link to="#techs">Технологии</Link>
-        </li>
-        <li className="navbar__link link" onClick={handleClick}>
-          <Link to="#about-me">Студент</Link>
-        </li>
-      </ul>
+      <div className="navbar__container">
+        <Link
+          to="#about-project"
+          className="navbar__link link"
+          onClick={handleClick}
+        >
+          О проекте
+        </Link>
+        <Link to="#techs" className="navbar__link link" onClick={handleClick}>
+          Технологии
+        </Link>
+        <Link
+          to="#about-me"
+          className="navbar__link link"
+          onClick={handleClick}
+        >
+          Студент
+        </Link>
+      </div>
     </nav>
   );
 }
