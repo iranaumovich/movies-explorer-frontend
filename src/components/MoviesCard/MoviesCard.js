@@ -1,10 +1,9 @@
 import React from "react";
 import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
 import DeleteButton from "../DeleteButton/DeleteButton.js";
-import moviePoster from "../../images/movi-pic-1.jpg";
 import "./style.css";
 
-function MoviesCard({ saved }) {
+function MoviesCard({ saved, alt, src }) {
   return (
     <div className="movies-card">
       <div className="movies-card__header">
@@ -16,11 +15,7 @@ function MoviesCard({ saved }) {
       </div>
 
       <div className="movies-card__image-container">
-        <img
-          className="movies-card__image"
-          src={moviePoster}
-          alt="постер к фильму"
-        />
+        <img className="movies-card__image" src={src} alt={alt} />
       </div>
     </div>
   );
