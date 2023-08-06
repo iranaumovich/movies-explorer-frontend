@@ -3,7 +3,7 @@ import "./style.css";
 
 function DeleteButton({ onClick }) {
   return (
-    <button className="delete-button" onClick={onClick}>
+    <button className="delete-button" type="button" onClick={onClick}>
       <DeleteIcon />
     </button>
   );

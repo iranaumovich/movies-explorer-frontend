@@ -9,7 +9,7 @@ export default function Footer() {
           Учебный проект Яндекс.Практикум х BeatFilm.
         </p>
         <div className="footer__info">
-          <div className="footer__links">
+          <nav className="footer__links">
             <a
               href="https://practicum.yandex.ru"
               target="blank"
@@ -24,7 +24,7 @@ export default function Footer() {
             >
               Github
             </a>
-          </div>
+          </nav>
           <p className="footer__copyright">&#169; {new Date().getFullYear()}</p>
         </div>
       </div>

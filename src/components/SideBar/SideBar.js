@@ -5,10 +5,10 @@ import "./style.css";
 
 function SideBar() {
   useEffect(() => {
-    document.body.classList.add("page_noscroll");
+    document.body.classList.add("body_noscroll");
 
     return () => {
-      document.body.classList.remove("page_noscroll");
+      document.body.classList.remove("body_noscroll");
     };
   }, []);
 

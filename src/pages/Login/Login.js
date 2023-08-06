@@ -6,40 +6,44 @@ import FormButton from "../../components/FormButton/FormButton";
 
 function Login() {
   return (
-    <div className="entrance">
-      <div className="entrance__container">
-        <div className="entrance__header">
-          <img className="entrance__logo" alt="Логотип сайта" src={Logo} />
-          <h2 className="entrance__title">Рады видеть!</h2>
-        </div>
-        <form className="form">
-          <div className="form__items">
-            <TextField
-              type="email"
-              id="email"
-              name="email"
-              lableText="E-mail"
-              isRight
-            />
-            <TextField
-              type="password"
-              id="password"
-              name="password"
-              lableText="Пароль"
-              isError
-            />
+    <main>
+      <section className="entrance">
+        <div className="entrance__container">
+          <div className="entrance__header">
+            <Link to="/">
+              <img className="entrance__logo" alt="Логотип сайта" src={Logo} />
+            </Link>
+            <h1 className="entrance__title">Рады видеть!</h1>
           </div>
+          <form className="form">
+            <div className="form__items">
+              <TextField
+                type="email"
+                id="email"
+                name="email"
+                lableText="E-mail"
+                isRight
+              />
+              <TextField
+                type="password"
+                id="password"
+                name="password"
+                lableText="Пароль"
+                isError
+              />
+            </div>
 
-          <FormButton buttonText="Войти" />
-        </form>
-        <p className="entrance__footer">
-          Ещё не зарегистрированы?{" "}
-          <Link to="signin" className="entrance__link link">
-            Регистрация
-          </Link>
-        </p>
-      </div>
-    </div>
+            <FormButton buttonText="Войти" />
+          </form>
+          <p className="entrance__footer">
+            Ещё не зарегистрированы?{" "}
+            <Link to="/signup" className="entrance__link link">
+              Регистрация
+            </Link>
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
 

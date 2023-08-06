@@ -1,6 +1,7 @@
 .movies-cardlist {
   max-width: 1140px;
   padding: 40px 10px 0;
+  margin: auto;
   min-height: 300px;
 }
 
@@ -25,7 +26,6 @@
   .movies-cardlist {
     padding-left: 0;
     padding-right: 0;
-    margin: auto; 
   }
 
   .movies-cardlist__grid {

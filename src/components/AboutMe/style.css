@@ -1,6 +1,7 @@
 .about-me {
   max-width: 1140px;
-  margin: 70px 14px 0;
+  padding: 70px 14px 0;
+  margin: auto;
 }
 
 .about-me__container {
@@ -52,7 +53,7 @@
 
 @media screen and (min-width: 768px) {
   .about-me {
-    margin: 90px 50px 0;
+    padding: 90px 50px 0;
   }
 
   .about-me__container {
@@ -91,7 +92,7 @@
 
 @media screen and (min-width: 1280px) {
   .about-me {
-    margin: 110px auto 0;
+    padding: 110px 0 0;
   }
 
   .about-me__container {

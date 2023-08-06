@@ -4,7 +4,7 @@ import "./style.css";
 
 function FavoriteButton({ active, onClick }) {
   return (
-    <button className="favorite-button" onClick={onClick}>
+    <button className="favorite-button" type="button" onClick={onClick}>
       {active ? <IconActive /> : <Icon />}
     </button>
   );
