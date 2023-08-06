@@ -3,7 +3,7 @@ import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
 
 export default function Movies() {
   return (
-    <main>
+    <main className="main">
       <MovieSearch />
       <MoviesCardList />
     </main>

@@ -1,7 +1,11 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
+@import url(./shared/body.css);
 @import url(./shared/page.css);
+@import url(./shared/main.css);
 @import url(./shared/title.css);
 @import url(./shared/entrance.css);
 @import url(./shared/form.css);
 @import url(./shared/link.css);
+
+

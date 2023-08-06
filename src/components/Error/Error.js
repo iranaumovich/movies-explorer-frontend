@@ -6,7 +6,7 @@ function Error() {
   const navigate = useNavigate();
 
   return (
-    <main>
+    <main className="main">
       <section className="page-error">
         <div className="page-error__container">
           <h1 className="page-error__number">404</h1>
