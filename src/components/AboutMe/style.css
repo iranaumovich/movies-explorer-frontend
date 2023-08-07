@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 60px;
-  gap: 40px
+  gap: 40px;
 }
 
 .about-me__description {
@@ -32,6 +32,7 @@
   font-size: 30px;
   font-weight: 400;
   letter-spacing: -1.2px;
+  line-height: 38px;
   margin: 0;
 }
 
@@ -41,7 +42,6 @@
   width: 292px;
   height: 352px;
   border-radius: 10px;
-  margin: 0 auto;
 }
 
 .about-me__text {
@@ -96,7 +96,7 @@
   }
 
   .about-me__container {
-    gap: 270px;
+    gap: 240px;
   }
 
   .about-me__description {

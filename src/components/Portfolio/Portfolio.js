@@ -6,7 +6,7 @@ function Portfolio() {
     <article className="portfolio">
       <h2 className="portfolio__heading">Портфолио</h2>
       <ul className="portfolio__list">
-        <li>
+        <li className="portfolio__list-item">
           <a
             className="portfolio__link link"
             href="https://iranaumovich.github.io/how-to-learn"
@@ -16,7 +16,7 @@ function Portfolio() {
             <span className="portfolio__link-arrow"></span>
           </a>
         </li>
-        <li>
+        <li className="portfolio__list-item">
           <a
             className="portfolio__link link"
             href="https://iranaumovich.github.io/russian-travel"
@@ -26,7 +26,7 @@ function Portfolio() {
             <span className="portfolio__link-arrow"></span>
           </a>
         </li>
-        <li>
+        <li className="portfolio__list-item">
           <a
             className="portfolio__link link"
             href="https://tsupryk.mesto.nomoreparties.sbs"

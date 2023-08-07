@@ -10,7 +10,7 @@
   position: absolute;
   width: 248px;
   height: 248px;
-  top: 50%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -21,7 +21,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .promo__title {
@@ -33,12 +32,14 @@
   margin: 0;
   width: 300px;
   text-align: center;
+  margin-top: 207px;
 }
 
 @media screen and (min-width: 768px) {
   .promo__background {
     width: 320px;
     height: 320px;
+    top: 49%;
   }
 
   .promo__container {
@@ -50,11 +51,16 @@
     line-height: 58px;
     letter-spacing: -2px;
     width: 730px;
+    margin-top: 326px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .promo__container {
     min-height: 524px;
+  }
+
+  .promo__title {
+    margin-top: 184px;
   }
 }

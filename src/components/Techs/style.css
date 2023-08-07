@@ -22,7 +22,7 @@
   margin: 50px 53px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
 }
 
@@ -41,13 +41,12 @@
 }
 
 .techs__text {
-  width: 292px;
   font-size: 11px;
   line-height: 16px;
   letter-spacing: -0.44px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
 
@@ -64,6 +63,7 @@
   }
 
   .techs__icons {
+    justify-content: center;
     margin: 83px 0 0;
   }
 
@@ -79,6 +79,17 @@
 @media screen and (min-width: 1280px) {
   .techs__container {
     padding: 100px 0;
+  }
+
+  .techs__icons {
+    margin: 100px 0 0;
+  }
+
+  .techs__icon {
+    width: 90px;
+    height: 60px;
+    font-size: 14px;
+    letter-spacing: -0.56px;
   }
 
   .techs__heading {
