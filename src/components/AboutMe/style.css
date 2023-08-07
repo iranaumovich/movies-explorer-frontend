@@ -58,6 +58,7 @@
 
   .about-me__container {
     flex-direction: row-reverse;
+    justify-content: space-between;
     margin-top: 66px;
     gap: 49px;
   }
@@ -84,6 +85,7 @@
   }
 
   .about-me__text {
+    max-width: 364px;
     font-size: 12px;
     line-height: 18px;
     margin-top: 20px;
@@ -121,6 +123,7 @@
   }
 
   .about-me__text {
+    max-width: 600px;
     font-size: 14px;
     line-height: 22px;
     margin-top: 26px;
