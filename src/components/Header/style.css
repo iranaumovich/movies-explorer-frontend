@@ -9,7 +9,7 @@
 
 .header__container {
   max-width: 1140px;
-  padding: 18px 18px 0 18px;
+  padding: 18px 14px 0 14px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -99,7 +99,7 @@
 
 .header__burger_active::before{
   transform: rotate(-45deg);
-	transform-origin: -2px 0px;
+	transform-origin: 3px -4px;
 }
 
 .header__burger_active {
@@ -108,10 +108,15 @@
 
 .header__burger_active::after{
   transform: rotate(45deg);
-	transform-origin: -2px 3px;
+	transform-origin: -2px 9px;
 }
 
 @media screen and (min-width: 768px) {
+  .header__container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .header__logged-out {
     gap: 30px;
   }
@@ -131,7 +136,7 @@
   }
 
   .header__logged-account_type_mobile {
-    margin-right: 22px;
+    margin-right: 0;
   }
 
   .header__burger, .header__burger::after, .header__burger::before {

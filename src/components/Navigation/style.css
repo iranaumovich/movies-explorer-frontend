@@ -72,7 +72,7 @@
   .navigation__menu {
     flex-direction: column;
     padding-top: 159px;
-    gap: 28px;
+    gap: 30px;
     align-items: center;
   }
 
@@ -88,7 +88,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    bottom: -4px;
+    bottom: -6px;
     right: 0;
     border-bottom: solid 2px #000000;
   }

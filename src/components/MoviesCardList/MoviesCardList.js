@@ -9,6 +9,7 @@ import moviePoster5 from "../../images/movie-pic-5.jpg";
 import moviePoster6 from "../../images/movie-pic-6.jpg";
 import moviePoster7 from "../../images/movie-pic-7.jpg";
 import moviePoster8 from "../../images/movie-pic-8.jpg";
+import moviePoster9 from "../../images/movie-pic-9.jpg";
 import Preloader from "../Preloader/Preloader";
 import "./style.css";
 
@@ -26,6 +27,7 @@ function MoviesCardList() {
           <MoviesCard src={moviePoster6} alt="постер к фильму 6" />
           <MoviesCard src={moviePoster7} alt="постер к фильму 7" />
           <MoviesCard src={moviePoster8} alt="постер к фильму 8" />
+          <MoviesCard src={moviePoster9} alt="постер к фильму 9" />
         </div>
         <MoreButton />
       </section>

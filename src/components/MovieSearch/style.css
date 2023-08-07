@@ -5,7 +5,7 @@
   flex-direction: column;
   padding: 60px 10px 0;
   margin: auto;
-  gap: 45px;
+  gap: 42px;
 }
 
 .movie-search::after {
@@ -33,7 +33,7 @@
 
 @media screen and (min-width: 768px) {
   .movie-search {
-    gap: 38px;
+    gap: 35px;
     padding: 60px 30px 0;
   }
 
