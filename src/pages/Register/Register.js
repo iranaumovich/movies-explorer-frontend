@@ -37,6 +37,8 @@ function Register() {
                 lableText="E-mail"
                 placeholder="Введите email"
                 isRight
+                minLength="2"
+                maxLength="30"
               />
               <TextField
                 type="password"

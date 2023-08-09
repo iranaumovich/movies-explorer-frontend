@@ -28,6 +28,8 @@ function Login() {
                 lableText="E-mail"
                 isRight
                 placeholder="Введите email"
+                minLength="2"
+                maxLength="30"
               />
               <TextField
                 type="password"
@@ -36,6 +38,8 @@ function Login() {
                 lableText="Пароль"
                 placeholder="Введите пароль"
                 isError
+                minLength="2"
+                maxLength="30"
               />
             </div>
 

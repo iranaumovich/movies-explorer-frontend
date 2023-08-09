@@ -25,6 +25,8 @@ function Profile({ isEditing, onEditClick }) {
                   name="name"
                   placeholder="Виталий"
                   disabled={isEditing ? false : true}
+                  minLength="2"
+                  maxLength="30"
                 ></input>
               </div>
               <div className="profile__item">
@@ -39,6 +41,8 @@ function Profile({ isEditing, onEditClick }) {
                   name="email"
                   placeholder="pochta@yandex.ru"
                   disabled={isEditing ? false : true}
+                  minLength="2"
+                  maxLength="30"
                 ></input>
               </div>
             </div>
@@ -52,7 +56,11 @@ function Profile({ isEditing, onEditClick }) {
               </div>
             ) : (
               <div className="profile__account">
-                <button className="profile__edit" onClick={onEditClick}>
+                <button
+                  className="profile__edit"
+                  type="button"
+                  onClick={onEditClick}
+                >
                   Редактировать
                 </button>
                 <Link to="/signin" className="profile__log-out link">

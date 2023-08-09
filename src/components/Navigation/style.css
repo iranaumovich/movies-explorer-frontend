@@ -1,10 +1,19 @@
 .navigation__menu {
   display: flex;
+  gap: 16px;
+}
+
+.navigation {
+  display: flex;
+  padding-left: 44px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navigation__link {
   text-decoration: none;
   color: #000000;
+  font-size: 13px;
 }
 
 .navigation__account-link {
@@ -35,30 +44,7 @@
   border-radius: 4px;
 }
 
-@media screen and (min-width: 1280px) {
-  .navigation {
-    padding-left: 44px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navigation__link {
-    font-size: 13px;
-    line-height: 18px;
-    padding-right: 16px;
-  }
-
-  .navigation__link_active {
-    font-weight: 500;
-  }
-  
-  .navigation__link:last-child {
-    padding-right: 0;
-  }
-}
-
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 767px) {
   .navigation {
     position: fixed;
     height: 100vh;
@@ -67,12 +53,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 28px;
+    padding-left: 0;
   }
 
   .navigation__menu {
     flex-direction: column;
-    padding-top: 159px;
-    gap: 30px;
+    padding-top: 144px;
+    gap: 24px;
     align-items: center;
   }
 
@@ -88,26 +75,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    bottom: -6px;
+    bottom: -7px;
     right: 0;
     border-bottom: solid 2px #000000;
   }
 
   .navigation__account {
-    padding-bottom: 92px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-
-  .navigation__account {
     padding-bottom: 48px;
   }
-
-  .navigation__menu {
-    flex-direction: column;
-    padding-top: 144px;
-    gap: 24px;
-  }
 }
-

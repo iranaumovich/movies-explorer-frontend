@@ -28,6 +28,9 @@ function MoviesCardList() {
           <MoviesCard src={moviePoster7} alt="постер к фильму 7" />
           <MoviesCard src={moviePoster8} alt="постер к фильму 8" />
           <MoviesCard src={moviePoster9} alt="постер к фильму 9" />
+          <MoviesCard src={moviePoster7} alt="постер к фильму 7" />
+          <MoviesCard src={moviePoster8} alt="постер к фильму 8" />
+          <MoviesCard src={moviePoster9} alt="постер к фильму 9" />
         </div>
         <MoreButton />
       </section>
