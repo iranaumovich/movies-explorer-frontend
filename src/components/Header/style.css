@@ -142,19 +142,19 @@
   .header__burger, .header__burger::after, .header__burger::before {
     height: 3px;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .header__logo-container {
-    margin-left: 0;
+  .header__logged-account_type_mobile {
+    display: none;
   }
 
   .header__logged-account_type_desktop {
     flex: 1;
     display: block;
   }
+}
 
-  .header__logged-account_type_mobile {
-    display: none;
+@media screen and (min-width: 1280px) {
+  .header__logo-container {
+    margin-left: 0;
   }
 }
