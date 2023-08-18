@@ -3,18 +3,10 @@ import { ReactComponent as IconActive } from "../../images/fav-button_active.svg
 import "./style.css";
 import React from "react";
 
-function FavoriteButton() {
-  const [active, setActive] = React.useState(false);
-
+function FavoriteButton({ onClick, isSaved }) {
   return (
-    <button
-      className="favorite-button"
-      type="button"
-      onClick={() => {
-        setActive(true);
-      }}
-    >
-      {active ? <IconActive /> : <Icon />}
+    <button className="favorite-button" type="button" onClick={onClick}>
+      {isSaved ? <IconActive /> : <Icon />}
     </button>
   );
 }

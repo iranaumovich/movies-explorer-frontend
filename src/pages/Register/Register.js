@@ -3,8 +3,24 @@ import Logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import TextField from "../../components/TextField/TextField";
 import FormButton from "../../components/FormButton/FormButton";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-function Register() {
+function Register({ handleRegister }) {
+  const { values, handleChange, errors, isValid } = useFormAndValidation({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!isValid) {
+      return;
+    }
+    const { name, email, password } = values;
+    handleRegister(name, email, password);
+  }
+
   return (
     <main className="main">
       <section className="entrance">
@@ -19,7 +35,7 @@ function Register() {
             </Link>
             <h1 className="entrance__title">Добро пожаловать!</h1>
           </div>
-          <form className="form">
+          <form noValidate className="form" onSubmit={handleSubmit}>
             <div className="form__items">
               <TextField
                 type="text"
@@ -29,6 +45,9 @@ function Register() {
                 placeholder="Введите имя"
                 minLength="2"
                 maxLength="30"
+                value={values.name}
+                handleChange={handleChange}
+                errors={errors.name}
               />
               <TextField
                 type="email"
@@ -36,9 +55,11 @@ function Register() {
                 name="email"
                 lableText="E-mail"
                 placeholder="Введите email"
-                isRight
                 minLength="2"
                 maxLength="30"
+                value={values.email}
+                handleChange={handleChange}
+                errors={errors.email}
               />
               <TextField
                 type="password"
@@ -48,7 +69,9 @@ function Register() {
                 placeholder="Введите пароль"
                 minLength="2"
                 maxLength="30"
-                isError
+                value={values.password}
+                handleChange={handleChange}
+                errors={errors.password}
               />
             </div>
 

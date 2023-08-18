@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function FormButton({ buttonText }) {
+function FormButton({ buttonText, isValid }) {
   return (
-    <button className="form-button" type="submit">
+    <button className="form-button" type="submit" disabled={!isValid}>
       {buttonText}
     </button>
   );

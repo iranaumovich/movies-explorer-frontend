@@ -1,10 +1,18 @@
 import React from "react";
 import movieLogo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
+import { CurrentUserContext } from "../CurrentUserContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
-function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
+function Header({ isMenuOpen, onBurgerClick }) {
+  const { loggedIn } = React.useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/signin");
+  };
+
   let container = null;
 
   if (loggedIn) {
@@ -33,7 +41,11 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
           <Link to="/signup" className="header__register-link link">
             Регистрация
           </Link>
-          <button className="header__button" type="button" onClick={onLogin}>
+          <button
+            className="header__button"
+            type="button"
+            onClick={handleLogin}
+          >
             Войти
           </button>
         </nav>

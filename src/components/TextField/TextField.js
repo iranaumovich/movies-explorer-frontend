@@ -2,25 +2,28 @@ import React from "react";
 import "./style.css";
 
 function TextField({
+  value,
+  handleChange,
+  errors,
   type,
   id,
   name,
   lableText,
-  isError,
-  isRight,
   placeholder,
   minLength,
   maxLength,
 }) {
   return (
     <div className="text-field">
-      <label className="text-field__label" for={id}>
+      <label className="text-field__label" htmlFor={id}>
         {lableText}
       </label>
       <input
         className={`text-field__control ${
-          isRight && "text-field__control_type_right"
-        } ${isError && "text-field__control_type_error"}`}
+          errors ? "text-field__control_type_error" : ""
+        } ${
+          !errors && value.length > 0 ? "text-field__control_type_right" : ""
+        }`}
         type={type}
         id={id}
         name={name}
@@ -28,13 +31,15 @@ function TextField({
         minLength={minLength}
         maxLength={maxLength}
         required
+        value={value || ""}
+        onChange={handleChange}
       />
       <span
         className={`text-field__error ${
-          isError && "text-field__error_visible"
+          errors ? "text-field__error_visible" : ""
         }`}
       >
-        Что-то пошло не так...
+        {errors}
       </span>
     </div>
   );

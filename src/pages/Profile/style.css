@@ -65,6 +65,13 @@
   background-color: transparent;
 }
 
+.profile__confirmation {
+  font-size: 11px;
+  text-align: center;
+  color: #2adf7f;
+  padding-top: 15px;
+}
+
 .profile__button {
   margin-top: auto;
 }

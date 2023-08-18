@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 
-function FilterCheckbox() {
-  const [checked, setChecked] = useState(false);
-
+function FilterCheckbox({ onChange, checked }) {
   return (
     <label className="toggle">
       <input
         className="toggle__input"
         checked={checked}
         type="checkbox"
-        onChange={() => setChecked(!checked)}
+        onChange={onChange}
       />
       <span
         className={`toggle__slider ${checked ? "toggle__slider_active" : ""}`}
