@@ -4,13 +4,15 @@ import FormButton from "../../components/FormButton/FormButton";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { CurrentUserContext } from "../../components/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 import "./style.css";
 
 function Profile({ onLogout, onUpdateUser }) {
   const { currentUser } = React.useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = React.useState(false);
-  const { values, setValues, handleChange, errors, isValid, setIsValid } =
+  const { clear } = useLocalStorage();
+  const { values, setValues, handleChange, errors, isValid } =
     useFormAndValidation({
       name: "",
       email: "",
@@ -40,8 +42,10 @@ function Profile({ onLogout, onUpdateUser }) {
     setConfirmation("изменения были успешно добавлены ✓");
   }
 
+  //выходим, удаляем токен, очищаем locStor
   function signOut() {
     localStorage.removeItem("token");
+    clear();
     onLogout();
     navigate("/signin", { replace: true });
   }

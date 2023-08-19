@@ -18,6 +18,7 @@ export default function Movies() {
   return (
     <main className="main">
       <MovieSearch
+        initialValue={query}
         onSubmit={setQuery}
         onToggleShorts={toggleFilterShorts}
         filterShorts={filterShorts}

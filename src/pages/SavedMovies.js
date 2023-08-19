@@ -1,5 +1,5 @@
 import MovieSearch from "../components/MovieSearch/MovieSearch";
-import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
+import SavedMoviesCardList from "../components/SavedMoviesCardList/SavedMoviesCardList";
 import useSavedMovies from "../hooks/useSavedMovies";
 
 export default function SavedMovies() {
@@ -20,7 +20,7 @@ export default function SavedMovies() {
         onToggleShorts={toggleFilterShorts}
         filterShorts={filterShorts}
       />
-      <MoviesCardList
+      <SavedMoviesCardList
         hasError={error}
         movies={filteredMovies}
         loading={loading}

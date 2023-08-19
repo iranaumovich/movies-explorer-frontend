@@ -1,49 +1,28 @@
 import React, { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import MoreButton from "../MoreButton/MoreButton";
 import Preloader from "../Preloader/Preloader";
 import "./style.css";
 import useMoviesCardList from "../../hooks/useMoviesCardList";
-import { API_BASE_URL } from "../../utils/environment";
 import mainApi from "../../utils/MainApi";
-import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
+import DeleteButton from "../DeleteButton/DeleteButton";
 
-function MoviesCardList({ movies, loading, searching, hasError }) {
+function SavedMoviesCardList({ movies, loading, searching, hasError }) {
   // хук по расположению карточек на странице
-  const { visibleCards, handleButtonClick } = useMoviesCardList(movies);
-  const [savedMovies, setSavedMovies] = useState([]);
-  const [savedMovieIds, setSavedMovieIds] = useState(() =>
-    savedMovies.map(({ movieId }) => movieId)
-  );
+  const [availableMovies, setAvailableMovies] = useState(movies);
+  const { visibleCards } = useMoviesCardList(availableMovies);
 
-  React.useEffect(() => {
-    mainApi.getSavedMovies().then((res) => setSavedMovies(res.data || []));
-  }, []);
-
-  React.useEffect(() => {
-    setSavedMovieIds(savedMovies.map(({ movieId }) => movieId));
-  }, [savedMovies]);
-
-  const saveMovie = (movie) => {
-    // отправляем запрос в API и создаем дубликат фильма со своим id, записанным в owner
-    mainApi
-      .createSavedMovie(movie)
-      .then((res) => {
-        setSavedMovieIds((value) => [...value, res.movieId]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  useEffect(() => setAvailableMovies(movies), [movies]);
 
   const deleteMovie = (id) => {
     // отправляем запрос в API на удаление сохраненного фильма из базы
     mainApi
       .deleteSavedMovie(id)
       .then(() => {
-        const index = savedMovieIds.findIndex((movieId) => id === movieId);
+        const index = availableMovies.findIndex(
+          ({ movieId }) => id === movieId
+        );
 
-        setSavedMovieIds((value) => value.toSpliced(index, 1));
+        setAvailableMovies((value) => value.toSpliced(index, 1));
       })
       .catch((err) => {
         console.log(err);
@@ -58,20 +37,18 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
       <>
         <div className="movies-cardlist__grid">
           {visibleCards.map((card) => {
-            const isFavorite = savedMovieIds.includes(card.id);
-            const handleFavoriteClick = () =>
-              isFavorite ? deleteMovie(card.id) : saveMovie(card);
             const button = (
-              <FavoriteButton
-                onClick={handleFavoriteClick}
-                active={isFavorite}
+              <DeleteButton
+                onClick={() => {
+                  deleteMovie(card.movieId);
+                }}
               />
             );
 
             return (
               <MoviesCard
-                key={card.id}
-                image={API_BASE_URL + card.image.url}
+                key={card.movieId}
+                image={card.image}
                 title={card.nameRU}
                 time={card.duration}
                 button={button}
@@ -79,9 +56,6 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
             );
           })}
         </div>
-        {visibleCards.length < movies.length && (
-          <MoreButton onClick={handleButtonClick} />
-        )}
       </>
     ) : searching ? (
       <p>Ничего не найдено</p>
@@ -103,4 +77,4 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
   return <section className="movies-cardlist">{errorMarkup}</section>;
 }
 
-export default MoviesCardList;
+export default SavedMoviesCardList;

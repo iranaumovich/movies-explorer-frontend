@@ -30,7 +30,6 @@ export const login = (email, password) => {
     .then(checkResponse)
     .then((data) => {
       if (data.token) {
-        console.log(data.token);
         localStorage.setItem("token", data.token);
         return data;
       }

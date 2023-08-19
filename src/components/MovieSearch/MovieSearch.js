@@ -3,11 +3,11 @@ import SearchForm from "../SearchForm/SearchForm";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./style.css";
 
-function MovieSearch({ onSubmit, onToggleShorts, filterShorts }) {
+function MovieSearch({ initialValue, filterShorts, onSubmit, onToggleShorts }) {
   return (
     <section>
       <form className="movie-search">
-        <SearchForm onSubmit={onSubmit} />
+        <SearchForm initialValue={initialValue} onSubmit={onSubmit} />
         <div className="movie-search__filter-container">
           <p className="movie-search__filter-name">Короткометражки</p>
           <FilterCheckbox onChange={onToggleShorts} checked={filterShorts} />

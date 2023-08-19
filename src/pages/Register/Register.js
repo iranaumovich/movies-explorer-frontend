@@ -75,7 +75,7 @@ function Register({ handleRegister }) {
               />
             </div>
 
-            <FormButton buttonText="Зарегистрироваться" />
+            <FormButton isValid={isValid} buttonText="Зарегистрироваться" />
           </form>
           <p className="entrance__footer">
             Уже зарегистрированы?{" "}

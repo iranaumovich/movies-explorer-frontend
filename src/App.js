@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import Movies from "./pages/Movies";
@@ -11,7 +11,6 @@ import Error from "./components/Error/Error";
 
 import * as auth from "./utils/auth";
 import mainApi from "./utils/MainApi";
-import moviesApi from "./utils/MoviesApi";
 import { useNavigate } from "react-router-dom";
 import ProtectedRouteElement from "./components/ProtectedRoute";
 import ScrollToHashElement from "./ScrollToHashElement";
@@ -23,7 +22,7 @@ function App() {
     name: "",
     email: "",
   });
-  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [signinIn, setSigninIn] = useState(true);
   const navigate = useNavigate();
 
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -31,40 +30,38 @@ function App() {
   //проверяем токен при загрузке страницы, чтобы узнать авторизован ли пользователь
   React.useEffect(() => {
     function checkToken() {
-      if (localStorage.getItem("token")) {
-        const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
 
-        if (token) {
-          auth
-            .getContentByToken(token)
-            .then((res) => {
-              if (res) {
-                mainApi.setAuthToken(token);
-                setLoggedIn(true);
-                setCurrentUser({
-                  id: res._id,
-                  name: res.name,
-                  email: res.email,
-                });
-                mainApi
-                  .getSavedMovies()
-                  .then((res) => setSavedMovies(res.data));
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
+      if (token) {
+        auth
+          .getContentByToken(token)
+          .then((res) => {
+            if (res) {
+              setLoggedIn(true);
+              mainApi.setAuthToken(token);
+              setCurrentUser({
+                id: res._id,
+                name: res.name,
+                email: res.email,
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => setSigninIn(false));
+      } else {
+        setSigninIn(false);
       }
     }
 
     !loggedIn && checkToken();
-  }, [loggedIn, navigate]);
+  }, [loggedIn]);
 
   function handleRegister(name, email, password) {
     auth
       .register(name, email, password)
-      .then((res) => {
+      .then(() => {
         setLoggedIn(true);
         navigate("/movies", { replace: true });
       })
@@ -107,10 +104,14 @@ function App() {
     setLoggedIn(false);
   }
 
+  if (signinIn) {
+    return null;
+  }
+
   return (
     //подключаем контекст userData, оборачиваем в него все содержимое компонента App,
     //контекст возвращает то, что записано в value
-    <CurrentUserContext.Provider value={{ currentUser, loggedIn, savedMovies }}>
+    <CurrentUserContext.Provider value={{ currentUser, loggedIn }}>
       <div className="page">
         <ScrollToHashElement />
         <Routes>

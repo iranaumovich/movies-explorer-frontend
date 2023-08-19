@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./style.css";
 
-function SearchForm({ onSubmit }) {
+function SearchForm({ initialValue, onSubmit }) {
   const inputRef = useRef(null);
 
   //получаем значение инпута по нажатию на кнопку
@@ -20,6 +20,7 @@ function SearchForm({ onSubmit }) {
           placeholder="Фильм"
           type="text"
           required
+          defaultValue={initialValue}
         />
         <button
           type="submit"

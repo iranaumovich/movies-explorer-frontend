@@ -1,13 +1,19 @@
 import React from "react";
 import moviesApi from "../utils/MoviesApi";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function useMovies() {
+  const { result, save } = useLocalStorage();
   const [movies, setMovies] = React.useState([]); //массив всех фильмов, полученных с сервера
-  const [query, setQuery] = React.useState(""); //поисковое слово
+  const [query, setQuery] = React.useState(() => (result ? result.query : "")); //поисковое слово
   const [loading, setLoading] = React.useState(false); //переменная для отображения прелодера
-  const [filteredMovies, setFilteredMovies] = React.useState([]); //массив отфильтрованных фильмов
+  const [filteredMovies, setFilteredMovies] = React.useState(() =>
+    result ? result.filteredMovies : []
+  ); //массив отфильтрованных фильмов
   const [error, setError] = React.useState(false);
-  const [filterShorts, setFilterShorts] = React.useState(false); //чекбокс
+  const [filterShorts, setFilterShorts] = React.useState(() =>
+    result ? result.filterShorts : false
+  ); //чекбокс
 
   //получаем все карточки с сервера
   React.useEffect(() => {
@@ -25,7 +31,8 @@ export default function useMovies() {
   //фильтруем карточки по введенному слову, в начале и в конце меняем loading, чтобы отображать прелодер
   React.useEffect(() => {
     setLoading(true);
-    setFilteredMovies(
+
+    const filteredMovies =
       query.length > 0
         ? movies
             .filter(
@@ -34,8 +41,10 @@ export default function useMovies() {
                 movie.nameEN.toLowerCase().includes(query.toLowerCase())
             )
             .filter((movie) => (filterShorts ? movie.duration <= 40 : true))
-        : []
-    );
+        : [];
+
+    setFilteredMovies(filteredMovies);
+    save({ query, filteredMovies, filterShorts });
     setLoading(false);
   }, [query, movies, filterShorts]);
 

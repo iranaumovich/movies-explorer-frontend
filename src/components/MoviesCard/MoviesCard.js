@@ -1,9 +1,8 @@
 import React from "react";
-import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
 import "./style.css";
 import getTimeFromMins from "../../utils/utils.js";
 
-function MoviesCard({ id, title, time, image, button }) {
+function MoviesCard({ title, time, image, button }) {
   return (
     <div className="movies-card">
       <div className="movies-card__header">

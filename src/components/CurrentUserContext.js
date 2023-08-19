@@ -1,3 +1,3 @@
 import React from "react";
 // создаем контекст userData
-export const CurrentUserContext = React.createContext();
+export const CurrentUserContext = React.createContext([]);
