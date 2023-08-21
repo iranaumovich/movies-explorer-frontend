@@ -1,4 +1,4 @@
-import { MOVIES_API_URL } from "../utils/environment";
+import { MOVIES_API_URL } from './environment';
 
 class Api {
   constructor(options) {
@@ -11,7 +11,7 @@ class Api {
       return res.json();
     }
 
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(Error(`Ошибка: ${res.status}`));
   }
 
   getAllMovies() {
@@ -26,7 +26,7 @@ class Api {
 const moviesApi = new Api({
   baseUrl: MOVIES_API_URL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 

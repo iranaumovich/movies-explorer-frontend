@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import MoviesCard from "../MoviesCard/MoviesCard";
-import MoreButton from "../MoreButton/MoreButton";
-import Preloader from "../Preloader/Preloader";
-import "./style.css";
-import useMoviesCardList from "../../hooks/useMoviesCardList";
-import { API_BASE_URL } from "../../utils/environment";
-import mainApi from "../../utils/MainApi";
-import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
+import React, { useState, useEffect, useContext } from 'react';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import MoreButton from '../MoreButton/MoreButton';
+import Preloader from '../Preloader/Preloader';
+import './style.css';
+import useMoviesCardList from '../../hooks/useMoviesCardList';
+import { API_BASE_URL } from '../../utils/environment';
+import mainApi from '../../utils/MainApi';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import CurrentUserContext from '../../utils/CurrentUserContext';
 
 function MoviesCardList({ movies, loading, searching, hasError }) {
   // хук по расположению карточек на странице
   const { visibleCards, handleButtonClick } = useMoviesCardList(movies);
-  const [savedMovies, setSavedMovies] = useState([]);
+  const {
+    currentUser: { savedMovies },
+    setCurrentUser,
+  } = useContext(CurrentUserContext);
   const [savedMovieIds, setSavedMovieIds] = useState(() =>
-    savedMovies.map(({ movieId }) => movieId)
+    savedMovies.map(({ movieId }) => movieId),
   );
 
-  React.useEffect(() => {
-    mainApi.getSavedMovies().then((res) => setSavedMovies(res.data || []));
-  }, []);
-
-  React.useEffect(() => {
+  useEffect(() => {
     setSavedMovieIds(savedMovies.map(({ movieId }) => movieId));
   }, [savedMovies]);
 
@@ -29,6 +29,10 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
     mainApi
       .createSavedMovie(movie)
       .then((res) => {
+        setCurrentUser((user) => ({
+          ...user,
+          savedMovies: [...user.savedMovies, res],
+        }));
         setSavedMovieIds((value) => [...value, res.movieId]);
       })
       .catch((err) => {
@@ -87,7 +91,7 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
       <p>Ничего не найдено</p>
     ) : null;
 
-  //если приходит ошибка от сервера, то показываем текст, иначе вставляем карточки
+  // если приходит ошибка от сервера, то показываем текст, иначе вставляем карточки
   const errorMarkup = hasError ? (
     <p>
       Во время запроса произошла ошибка. Возможно, проблема с соединением или

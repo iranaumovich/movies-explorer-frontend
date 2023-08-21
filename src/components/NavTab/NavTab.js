@@ -1,12 +1,12 @@
-import { React, useRef } from "react";
-import "./style.css";
-import { Link } from "react-router-dom";
+import React, { useRef } from 'react';
+import './style.css';
+import { Link } from 'react-router-dom';
 
 function NavTab() {
   const ref = useRef(null);
 
   const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -15,8 +15,7 @@ function NavTab() {
         <Link
           to="#about-project"
           className="navbar__link link"
-          onClick={handleClick}
-        >
+          onClick={handleClick}>
           О проекте
         </Link>
         <Link to="#techs" className="navbar__link link" onClick={handleClick}>
@@ -25,8 +24,7 @@ function NavTab() {
         <Link
           to="#about-me"
           className="navbar__link link"
-          onClick={handleClick}
-        >
+          onClick={handleClick}>
           Студент
         </Link>
       </div>

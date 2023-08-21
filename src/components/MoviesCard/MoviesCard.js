@@ -1,6 +1,6 @@
-import React from "react";
-import "./style.css";
-import getTimeFromMins from "../../utils/utils.js";
+import React from 'react';
+import './style.css';
+import getTimeFromMins from '../../utils/utils';
 
 function MoviesCard({ title, time, image, button }) {
   return (

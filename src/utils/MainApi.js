@@ -1,5 +1,4 @@
-import { MAIN_API_URL } from "../utils/environment";
-import { API_BASE_URL } from "../utils/environment";
+import { MAIN_API_URL, API_BASE_URL } from './environment';
 
 class Api {
   constructor(options) {
@@ -12,22 +11,22 @@ class Api {
       return res.json();
     }
 
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(Error(`Ошибка: ${res.status}`));
   }
 
   setAuthToken(token) {
-    this._headers["Authorization"] = "Bearer " + token;
+    this._headers.Authorization = `Bearer ${token}`;
   }
 
   getUserInfoFromServer() {
-    return fetch(`${this._baseUrl}/users/me `, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     }).then(this._checkResponse);
   }
 
   editUserInfo(newName, newEmail) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: newName,
@@ -44,7 +43,7 @@ class Api {
 
   createSavedMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
-      method: "POST",
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         country: movie.country,
@@ -64,7 +63,7 @@ class Api {
 
   deleteSavedMovie(id) {
     return fetch(`${this._baseUrl}/movies/${id} `, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
   }
@@ -73,7 +72,7 @@ class Api {
 const api = new Api({
   baseUrl: MAIN_API_URL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 

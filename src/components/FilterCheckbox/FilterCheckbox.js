@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
 function FilterCheckbox({ onChange, checked }) {
   return (
@@ -11,7 +11,7 @@ function FilterCheckbox({ onChange, checked }) {
         onChange={onChange}
       />
       <span
-        className={`toggle__slider ${checked ? "toggle__slider_active" : ""}`}
+        className={`toggle__slider ${checked ? 'toggle__slider_active' : ''}`}
       />
     </label>
   );

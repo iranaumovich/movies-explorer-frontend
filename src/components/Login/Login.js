@@ -1,16 +1,19 @@
-import React from "react";
-import Logo from "../../images/logo.svg";
-import { Link, useNavigate, Navigate } from "react-router-dom";
-import TextField from "../../components/TextField/TextField";
-import FormButton from "../../components/FormButton/FormButton";
-import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { CurrentUserContext } from "../../components/CurrentUserContext";
+import React, { useContext } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import Logo from '../../images/logo.svg';
+import TextField from '../TextField/TextField';
+import FormButton from '../FormButton/FormButton';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import CurrentUserContext from '../../utils/CurrentUserContext';
+import useLogin from '../../hooks/useLogin';
+import { ROUTES } from '../../utils/environment';
 
-function Login({ handleLogin }) {
-  const { loggedIn } = React.useContext(CurrentUserContext);
+function Login() {
+  const { login, error: loginError, loggingIn } = useLogin();
+  const { currentUser } = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid } = useFormAndValidation({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   function handleSubmit(e) {
@@ -21,11 +24,12 @@ function Login({ handleLogin }) {
     }
 
     const { email, password } = values;
-    handleLogin(email, password);
+
+    login(email, password);
   }
 
-  if (loggedIn) {
-    return <Navigate to="/" />;
+  if (currentUser.loggedIn) {
+    return <Navigate to={ROUTES.HOME} />;
   }
 
   return (
@@ -33,7 +37,7 @@ function Login({ handleLogin }) {
       <section className="entrance">
         <div className="entrance__container">
           <div className="entrance__header">
-            <Link to="/">
+            <Link to={ROUTES.HOME}>
               <img
                 className="entrance__logo link"
                 alt="Логотип сайта"
@@ -48,8 +52,9 @@ function Login({ handleLogin }) {
                 type="email"
                 id="email"
                 name="email"
-                lableText="E-mail"
-                isRight
+                labelText="E-mail"
+                pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                disabled={loggingIn}
                 placeholder="Введите email"
                 minLength="2"
                 maxLength="30"
@@ -61,9 +66,9 @@ function Login({ handleLogin }) {
                 type="password"
                 id="password"
                 name="password"
-                lableText="Пароль"
+                labelText="Пароль"
                 placeholder="Введите пароль"
-                isError
+                disabled={loggingIn}
                 minLength="2"
                 maxLength="30"
                 value={values.password}
@@ -72,11 +77,17 @@ function Login({ handleLogin }) {
               />
             </div>
 
+            <p
+              className={`form__error ${
+                loginError.length > 0 ? 'form__error_visible' : ''
+              }`}>
+              {loginError}
+            </p>
             <FormButton buttonText="Войти" isValid={isValid} />
           </form>
           <p className="entrance__footer">
-            Ещё не зарегистрированы?{" "}
-            <Link to="/signup" className="entrance__link link">
+            Ещё не зарегистрированы?{' '}
+            <Link to={ROUTES.SIGN_UP} className="entrance__link link">
               Регистрация
             </Link>
           </p>

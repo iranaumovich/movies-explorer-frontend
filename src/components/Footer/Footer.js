@@ -1,5 +1,6 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import { CURRENT_YEAR } from '../../utils/environment';
+import './style.css';
 
 export default function Footer() {
   return (
@@ -13,19 +14,17 @@ export default function Footer() {
             <a
               href="https://practicum.yandex.ru"
               target="blank"
-              className="footer__link link"
-            >
+              className="footer__link link">
               Яндекс.Практикум
             </a>
             <a
               href="https://github.com"
               target="blank"
-              className="footer__link link"
-            >
+              className="footer__link link">
               Github
             </a>
           </nav>
-          <p className="footer__copyright">&#169; {new Date().getFullYear()}</p>
+          <p className="footer__copyright">&#169; {CURRENT_YEAR}</p>
         </div>
       </div>
     </footer>

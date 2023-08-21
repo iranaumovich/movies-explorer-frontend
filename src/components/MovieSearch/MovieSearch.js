@@ -1,7 +1,7 @@
-import React from "react";
-import SearchForm from "../SearchForm/SearchForm";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import "./style.css";
+import React from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import './style.css';
 
 function MovieSearch({ initialValue, filterShorts, onSubmit, onToggleShorts }) {
   return (

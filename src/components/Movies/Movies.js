@@ -1,8 +1,10 @@
-import MovieSearch from "../components/MovieSearch/MovieSearch";
-import SavedMoviesCardList from "../components/SavedMoviesCardList/SavedMoviesCardList";
-import useSavedMovies from "../hooks/useSavedMovies";
+import React from 'react';
+import MovieSearch from '../MovieSearch/MovieSearch';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import useMovies from '../../hooks/useMovies';
 
-export default function SavedMovies() {
+export default function Movies() {
+  // хук по получению и фильтрации карточек
   const {
     error,
     filteredMovies,
@@ -11,16 +13,17 @@ export default function SavedMovies() {
     setQuery,
     toggleFilterShorts,
     filterShorts,
-  } = useSavedMovies();
+  } = useMovies();
 
   return (
     <main className="main">
       <MovieSearch
+        initialValue={query}
         onSubmit={setQuery}
         onToggleShorts={toggleFilterShorts}
         filterShorts={filterShorts}
       />
-      <SavedMoviesCardList
+      <MoviesCardList
         hasError={error}
         movies={filteredMovies}
         loading={loading}

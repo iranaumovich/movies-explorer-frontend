@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
-import "./style.css";
+import React, { useRef } from 'react';
+import './style.css';
 
 function SearchForm({ initialValue, onSubmit }) {
   const inputRef = useRef(null);
 
-  //получаем значение инпута по нажатию на кнопку
+  // получаем значение инпута по нажатию на кнопку
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -25,8 +25,7 @@ function SearchForm({ initialValue, onSubmit }) {
         <button
           type="submit"
           className="search-form__btn"
-          onClick={handleSubmit}
-        >
+          onClick={handleSubmit}>
           Найти
         </button>
       </div>

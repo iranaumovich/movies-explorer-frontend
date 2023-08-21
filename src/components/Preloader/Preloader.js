@@ -1,14 +1,14 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Preloader = () => {
+function Preloader() {
   return (
     <div className="preloader">
       <div className="preloader__container">
-        <span className="preloader__round"></span>
+        <span className="preloader__round" />
       </div>
     </div>
   );
-};
+}
 
 export default Preloader;

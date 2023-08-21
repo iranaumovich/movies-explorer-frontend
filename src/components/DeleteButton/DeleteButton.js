@@ -1,5 +1,6 @@
-import { ReactComponent as DeleteIcon } from "../../images/delete-button.svg";
-import "./style.css";
+import React from 'react';
+import { ReactComponent as DeleteIcon } from '../../images/delete-button.svg';
+import './style.css';
 
 function DeleteButton({ onClick }) {
   return (

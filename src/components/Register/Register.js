@@ -1,24 +1,30 @@
-import React from "react";
-import Logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
-import TextField from "../../components/TextField/TextField";
-import FormButton from "../../components/FormButton/FormButton";
-import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../../images/logo.svg';
+import TextField from '../TextField/TextField';
+import FormButton from '../FormButton/FormButton';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import { ROUTES } from '../../utils/environment';
+import useRegister from '../../hooks/useRegister';
 
-function Register({ handleRegister }) {
+function Register() {
+  const { register, registering, error: registerError } = useRegister();
   const { values, handleChange, errors, isValid } = useFormAndValidation({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
 
   function handleSubmit(e) {
     e.preventDefault();
+
     if (!isValid) {
       return;
     }
+
     const { name, email, password } = values;
-    handleRegister(name, email, password);
+
+    register(name, email, password);
   }
 
   return (
@@ -26,7 +32,7 @@ function Register({ handleRegister }) {
       <section className="entrance">
         <div className="entrance__container">
           <div className="entrance__header">
-            <Link to="/">
+            <Link to={ROUTES.HOME}>
               <img
                 className="entrance__logo link"
                 alt="Логотип сайта"
@@ -41,8 +47,9 @@ function Register({ handleRegister }) {
                 type="text"
                 id="name"
                 name="name"
-                lableText="Имя"
+                labelText="Имя"
                 placeholder="Введите имя"
+                disabled={registering}
                 minLength="2"
                 maxLength="30"
                 value={values.name}
@@ -53,8 +60,9 @@ function Register({ handleRegister }) {
                 type="email"
                 id="email"
                 name="email"
-                lableText="E-mail"
+                labelText="E-mail"
                 placeholder="Введите email"
+                disabled={registering}
                 minLength="2"
                 maxLength="30"
                 value={values.email}
@@ -65,8 +73,9 @@ function Register({ handleRegister }) {
                 type="password"
                 id="password"
                 name="password"
-                lableText="Пароль"
+                labelText="Пароль"
                 placeholder="Введите пароль"
+                disabled={registering}
                 minLength="2"
                 maxLength="30"
                 value={values.password}
@@ -75,11 +84,22 @@ function Register({ handleRegister }) {
               />
             </div>
 
-            <FormButton isValid={isValid} buttonText="Зарегистрироваться" />
+            <p
+              className={`form__error ${
+                registerError.length > 0 ? 'form__error_visible' : ''
+              }`}>
+              {registerError}
+            </p>
+
+            <FormButton
+              disabled={registering}
+              isValid={isValid}
+              buttonText="Зарегистрироваться"
+            />
           </form>
           <p className="entrance__footer">
-            Уже зарегистрированы?{" "}
-            <Link to="/signin" className="entrance__link link">
+            Уже зарегистрированы?{' '}
+            <Link to={ROUTES.SIGN_IN} className="entrance__link link">
               Войти
             </Link>
           </p>

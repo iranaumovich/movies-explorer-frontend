@@ -1,5 +1,5 @@
 .movies-card {
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
 }
 
@@ -24,7 +24,7 @@
 .movies-card__time {
   margin: 0;
   font-size: 11px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .movies-card__title {

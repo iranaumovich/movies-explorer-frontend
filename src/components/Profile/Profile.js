@@ -1,35 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import FormButton from "../../components/FormButton/FormButton";
-import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { CurrentUserContext } from "../../components/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import React, { useState, useEffect, useContext } from 'react';
+import FormButton from '../FormButton/FormButton';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import CurrentUserContext from '../../utils/CurrentUserContext';
 
-import "./style.css";
+import './style.css';
+import useProfile from '../../hooks/useProfile';
 
-function Profile({ onLogout, onUpdateUser }) {
-  const { currentUser } = React.useContext(CurrentUserContext);
-  const [isEditing, setIsEditing] = React.useState(false);
-  const { clear } = useLocalStorage();
+function Profile() {
+  const [isEditing, setIsEditing] = useState(false);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { changing, changeProfile, signOut } = useProfile();
   const { values, setValues, handleChange, errors, isValid } =
     useFormAndValidation({
-      name: "",
-      email: "",
+      name: '',
+      email: '',
     });
-  const navigate = useNavigate();
-  const [confirmation, setConfirmation] = React.useState("");
+  const [confirmation, setConfirmation] = useState('');
 
   // после загрузки текущего пользователя из API
   // его данные будут записаны в инпуты.
-  React.useEffect(() => {
+  useEffect(() => {
     setValues({
       name: currentUser.name,
       email: currentUser.email,
     });
-  }, [currentUser, setValues]);
+  }, [currentUser]);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!isValid) {
@@ -37,18 +34,15 @@ function Profile({ onLogout, onUpdateUser }) {
     }
 
     const { name, email } = values;
-    onUpdateUser(name, email);
+    changeProfile(name, email);
     setIsEditing(false);
-    setConfirmation("изменения были успешно добавлены ✓");
-  }
+    setConfirmation('Изменения были успешно добавлены ✓');
+  };
 
-  //выходим, удаляем токен, очищаем locStor
-  function signOut() {
-    localStorage.removeItem("token");
-    clear();
-    onLogout();
-    navigate("/signin", { replace: true });
-  }
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+    setConfirmation('');
+  };
 
   return (
     <main className="main">
@@ -69,12 +63,12 @@ function Profile({ onLogout, onUpdateUser }) {
                   id="name"
                   name="name"
                   placeholder={currentUser.name}
-                  disabled={isEditing ? false : true}
+                  disabled={!isEditing || changing}
                   minLength="2"
                   maxLength="30"
-                  value={values.name || ""}
+                  value={values.name || ''}
                   onChange={handleChange}
-                ></input>
+                />
               </div>
               <div className="profile__item">
                 <label htmlFor="email" className="profile__lable">
@@ -86,13 +80,14 @@ function Profile({ onLogout, onUpdateUser }) {
                   type="email"
                   id="email"
                   name="email"
+                  pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
                   placeholder={currentUser.email}
-                  disabled={isEditing ? false : true}
+                  disabled={!isEditing || changing}
                   minLength="2"
                   maxLength="30"
-                  value={values.email || ""}
+                  value={values.email || ''}
                   onChange={handleChange}
-                ></input>
+                />
               </div>
             </div>
             <p className="profile__confirmation">{confirmation}</p>
@@ -101,32 +96,30 @@ function Profile({ onLogout, onUpdateUser }) {
               <div className="profile__button">
                 <span
                   className={`profile__error ${
-                    errors ? "profile__error_visible" : ""
-                  }`}
-                >
+                    errors ? 'profile__error_visible' : ''
+                  }`}>
                   {[errors.name, errors.email]}
                 </span>
-                <FormButton buttonText="Сохранить" isValid={isValid} />
+                <FormButton
+                  disabled={changing}
+                  buttonText="Сохранить"
+                  isValid={isValid}
+                />
               </div>
             ) : (
               <div className="profile__account">
                 <button
                   className="profile__edit"
                   type="button"
-                  onClick={() => {
-                    setIsEditing(!isEditing);
-                    setConfirmation("");
-                  }}
-                >
+                  onClick={handleEditClick}>
                   Редактировать
                 </button>
-                <Link
-                  to="/signin"
+                <button
+                  type="button"
                   className="profile__log-out link"
-                  onClick={signOut}
-                >
+                  onClick={signOut}>
                   Выйти из аккаунта
-                </Link>
+                </button>
               </div>
             )}
           </form>

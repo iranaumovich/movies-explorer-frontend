@@ -1,50 +1,43 @@
-import React from "react";
-import mainApi from "../utils/MainApi";
+import { useState, useEffect, useContext } from 'react';
+import { SHORT_FILM_DURATION } from '../utils/environment';
+import CurrentUserContext from '../utils/CurrentUserContext';
 
 export default function useSavedMovies() {
-  const [movies, setMovies] = React.useState([]); //массив всех фильмов, полученных с сервера
-  const [query, setQuery] = React.useState(""); //поисковое слово
-  const [loading, setLoading] = React.useState(false); //переменная для отображения прелодера
-  const [filteredMovies, setFilteredMovies] = React.useState([]); //массив отфильтрованных фильмов
-  const [error, setError] = React.useState(false);
-  const [filterShorts, setFilterShorts] = React.useState(false); //чекбокс
+  const {
+    currentUser: { savedMovies },
+  } = useContext(CurrentUserContext);
+  const [query, setQuery] = useState(''); // поисковое слово
+  const [loading, setLoading] = useState(false); // переменная для отображения прелодера
+  const [filteredMovies, setFilteredMovies] = useState([]); // массив отфильтрованных фильмов
+  const [filterShorts, setFilterShorts] = useState(false); // чекбокс
 
-  //получаем все карточки с сервера
-  React.useEffect(() => {
+  // фильтруем карточки по введенному слову, в начале и в конце меняем loading, чтобы отображать прелодер
+  useEffect(() => {
     setLoading(true);
-    mainApi
-      .getSavedMovies()
-      .then((movies) => {
-        setMovies(movies.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(true);
-      });
-  }, []);
 
-  //фильтруем карточки по введенному слову, в начале и в конце меняем loading, чтобы отображать прелодер
-  React.useEffect(() => {
-    setLoading(true);
-    setFilteredMovies(
-      query.length > 0
-        ? movies
-            .filter(
-              (movie) =>
-                movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
-                movie.nameEN.toLowerCase().includes(query.toLowerCase())
-            )
-            .filter((movie) => (filterShorts ? movie.duration <= 40 : true))
-        : movies
-    );
+    let filteredMovies = savedMovies;
+
+    if (query.length > 0) {
+      filteredMovies = filteredMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+
+    if (filterShorts) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        filterShorts ? movie.duration <= SHORT_FILM_DURATION : true,
+      );
+    }
+
+    setFilteredMovies(filteredMovies);
     setLoading(false);
-  }, [query, movies, filterShorts]);
+  }, [query, savedMovies, filterShorts]);
 
   const toggleFilterShorts = () => setFilterShorts(!filterShorts);
 
   return {
-    error,
     filteredMovies,
     loading,
     query,

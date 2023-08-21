@@ -1,8 +1,7 @@
-import React from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import { useState } from "react";
-import SideBar from "../../components/SideBar/SideBar";
+import React, { useState } from 'react';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import SideBar from '../SideBar/SideBar';
 
 function Page({ children, hasFooter }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

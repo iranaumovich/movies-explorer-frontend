@@ -1,9 +1,12 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-function FormButton({ buttonText, isValid }) {
+function FormButton({ buttonText, disabled, isValid }) {
   return (
-    <button className="form-button" type="submit" disabled={!isValid}>
+    <button
+      className="form-button"
+      type="submit"
+      disabled={!isValid || disabled}>
       {buttonText}
     </button>
   );

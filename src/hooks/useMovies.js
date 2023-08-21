@@ -1,26 +1,35 @@
-import React from "react";
-import moviesApi from "../utils/MoviesApi";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useState, useEffect, useContext } from 'react';
+import moviesApi from '../utils/MoviesApi';
+import useLocalStorage from './useLocalStorage';
+import { SHORT_FILM_DURATION } from '../utils/environment';
+import CurrentUserContext from '../utils/CurrentUserContext';
 
 export default function useMovies() {
   const { result, save } = useLocalStorage();
-  const [movies, setMovies] = React.useState([]); //массив всех фильмов, полученных с сервера
-  const [query, setQuery] = React.useState(() => (result ? result.query : "")); //поисковое слово
-  const [loading, setLoading] = React.useState(false); //переменная для отображения прелодера
-  const [filteredMovies, setFilteredMovies] = React.useState(() =>
-    result ? result.filteredMovies : []
-  ); //массив отфильтрованных фильмов
-  const [error, setError] = React.useState(false);
-  const [filterShorts, setFilterShorts] = React.useState(() =>
-    result ? result.filterShorts : false
-  ); //чекбокс
+  const {
+    currentUser: { movies },
+    setCurrentUser,
+  } = useContext(CurrentUserContext);
+  const [query, setQuery] = useState(() => (result ? result.query : '')); // поисковое слово
+  const [loading, setLoading] = useState(false); // переменная для отображения прелодера
+  const [filteredMovies, setFilteredMovies] = useState(() =>
+    result ? result.filteredMovies : [],
+  ); // массив отфильтрованных фильмов
+  const [error, setError] = useState(false);
+  const [filterShorts, setFilterShorts] = useState(() =>
+    result ? result.filterShorts : false,
+  ); // чекбокс
 
-  //получаем все карточки с сервера
-  React.useEffect(() => {
+  // получаем все карточки с сервера
+  useEffect(() => {
+    if (movies && movies.length > 0) {
+      return;
+    }
+
     moviesApi
       .getAllMovies()
       .then((movies) => {
-        setMovies(movies);
+        setCurrentUser((user) => ({ ...user, movies }));
       })
       .catch((err) => {
         console.log(err);
@@ -28,20 +37,29 @@ export default function useMovies() {
       });
   }, []);
 
-  //фильтруем карточки по введенному слову, в начале и в конце меняем loading, чтобы отображать прелодер
-  React.useEffect(() => {
+  // фильтруем карточки по введенному слову, в начале и в конце меняем loading, чтобы отображать прелодер
+  useEffect(() => {
     setLoading(true);
 
-    const filteredMovies =
-      query.length > 0
-        ? movies
-            .filter(
-              (movie) =>
-                movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
-                movie.nameEN.toLowerCase().includes(query.toLowerCase())
-            )
-            .filter((movie) => (filterShorts ? movie.duration <= 40 : true))
-        : [];
+    let filteredMovies = movies;
+
+    if (query.length > 0) {
+      filteredMovies = filteredMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+
+    if (filterShorts) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        filterShorts ? movie.duration <= SHORT_FILM_DURATION : true,
+      );
+    }
+
+    if (query.length === 0 && !filterShorts) {
+      filteredMovies = [];
+    }
 
     setFilteredMovies(filteredMovies);
     save({ query, filteredMovies, filterShorts });
