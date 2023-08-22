@@ -40,6 +40,8 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
       });
   };
 
+  console.log(savedMovies, savedMovieIds);
+
   const deleteMovie = (id) => {
     // отправляем запрос в API на удаление сохраненного фильма из базы
     mainApi
@@ -48,6 +50,12 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
         const index = savedMovieIds.findIndex((movieId) => id === movieId);
 
         setSavedMovieIds((value) => value.toSpliced(index, 1));
+
+        setCurrentUser((user) => {
+          const index = user.savedMovies.findIndex((movieId) => id === movieId);
+
+          return { ...user, savedMovies: user.savedMovies.toSpliced(index, 1) };
+        });
       })
       .catch((err) => {
         console.log(err);
