@@ -4,7 +4,7 @@ import Logo from '../../images/logo.svg';
 import TextField from '../TextField/TextField';
 import FormButton from '../FormButton/FormButton';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
-import { ROUTES } from '../../utils/environment';
+import { EMAIL_PATTERN, ROUTES } from '../../utils/environment';
 import useRegister from '../../hooks/useRegister';
 
 function Register() {
@@ -57,12 +57,13 @@ function Register() {
                 errors={errors.name}
               />
               <TextField
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 labelText="E-mail"
                 placeholder="Введите email"
                 disabled={registering}
+                pattern={EMAIL_PATTERN}
                 minLength="2"
                 maxLength="30"
                 value={values.email}

@@ -5,6 +5,7 @@ import CurrentUserContext from '../../utils/CurrentUserContext';
 
 import './style.css';
 import useProfile from '../../hooks/useProfile';
+import { EMAIL_PATTERN } from '../../utils/environment';
 
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -66,7 +67,8 @@ function Profile() {
                   disabled={!isEditing || changing}
                   minLength="2"
                   maxLength="30"
-                  value={values.name || ''}
+                  required
+                  value={values.name}
                   onChange={handleChange}
                 />
               </div>
@@ -77,15 +79,16 @@ function Profile() {
                 <input
                   autoComplete="off"
                   className="profile__input"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
-                  pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                  pattern={EMAIL_PATTERN}
                   placeholder={currentUser.email}
                   disabled={!isEditing || changing}
                   minLength="2"
+                  required
                   maxLength="30"
-                  value={values.email || ''}
+                  value={values.email}
                   onChange={handleChange}
                 />
               </div>

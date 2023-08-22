@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 const {
   REACT_APP_API_BASE_URL = 'https://api.nomoreparties.co',
   REACT_APP_MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies',
@@ -37,3 +39,6 @@ export const AUTH_ENDPOINTS = {
   SIGN_IN: `${MAIN_API_URL}/signin`,
   CURRENT_USER: `${MAIN_API_URL}/users/me`,
 };
+
+export const EMAIL_PATTERN =
+  '[A-Za-z0-9\\._+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}';

@@ -6,7 +6,7 @@ import FormButton from '../FormButton/FormButton';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import CurrentUserContext from '../../utils/CurrentUserContext';
 import useLogin from '../../hooks/useLogin';
-import { ROUTES } from '../../utils/environment';
+import { EMAIL_PATTERN, ROUTES } from '../../utils/environment';
 
 function Login() {
   const { login, error: loginError, loggingIn } = useLogin();
@@ -49,11 +49,11 @@ function Login() {
           <form noValidate className="form" onSubmit={handleSubmit}>
             <div className="form__items">
               <TextField
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 labelText="E-mail"
-                pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                pattern={EMAIL_PATTERN}
                 disabled={loggingIn}
                 placeholder="Введите email"
                 minLength="2"

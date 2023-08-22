@@ -22,9 +22,7 @@ export default function useMoviesCardList(movies) {
     } else {
       setVisibleCards(movies.slice(0, VISIBLE_CARDS_LG));
     }
-  }, []);
-
-  useEffect(() => setVisibleCards(movies), [movies]);
+  }, [movies]);
 
   //  сколько карточек дополнительно подгружается в зависимости от размера экрана
   //  +setTimeout чтобы функция не срабатывала слишком часто при изменении ширины
