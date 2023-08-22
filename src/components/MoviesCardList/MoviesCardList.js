@@ -40,8 +40,6 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
       });
   };
 
-  console.log(savedMovies, savedMovieIds);
-
   const deleteMovie = (id) => {
     // отправляем запрос в API на удаление сохраненного фильма из базы
     mainApi
