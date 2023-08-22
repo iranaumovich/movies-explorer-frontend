@@ -50,7 +50,9 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
         setSavedMovieIds((value) => value.toSpliced(index, 1));
 
         setCurrentUser((user) => {
-          const index = user.savedMovies.findIndex((movieId) => id === movieId);
+          const index = user.savedMovies.findIndex(
+            ({ movieId }) => id === movieId,
+          );
 
           return { ...user, savedMovies: user.savedMovies.toSpliced(index, 1) };
         });

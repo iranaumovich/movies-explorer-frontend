@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 import './style.css';
@@ -11,9 +11,7 @@ function SavedMoviesCardList({ movies, loading, searching }) {
   // хук по расположению карточек на странице
   const [availableMovies, setAvailableMovies] = useState(movies);
   const { visibleCards } = useMoviesCardList(availableMovies);
-  const {
-    setCurrentUser,
-  } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
   useEffect(() => setAvailableMovies(movies), [movies]);
 
@@ -29,7 +27,9 @@ function SavedMoviesCardList({ movies, loading, searching }) {
         setAvailableMovies((value) => value.toSpliced(index, 1));
 
         setCurrentUser((user) => {
-          const index = user.savedMovies.findIndex((movieId) => id === movieId);
+          const index = user.savedMovies.findIndex(
+            ({ movieId }) => id === movieId,
+          );
 
           return { ...user, savedMovies: user.savedMovies.toSpliced(index, 1) };
         });
