@@ -10,13 +10,12 @@ import { EMAIL_PATTERN } from '../../utils/environment';
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const { currentUser } = useContext(CurrentUserContext);
-  const { changing, changeProfile, signOut } = useProfile();
-  const { values, setValues, handleChange, errors, isValid } =
+  const { changing, changeProfile, error, isSuccess, signOut } = useProfile();
+  const { dirty, values, setValues, resetForm, handleChange, errors, isValid } =
     useFormAndValidation({
-      name: '',
-      email: '',
+      name: currentUser.name,
+      email: currentUser.email,
     });
-  const [confirmation, setConfirmation] = useState('');
 
   // после загрузки текущего пользователя из API
   // его данные будут записаны в инпуты.
@@ -35,14 +34,17 @@ function Profile() {
     }
 
     const { name, email } = values;
+
     changeProfile(name, email);
-    setIsEditing(false);
-    setConfirmation('Изменения были успешно добавлены ✓');
+
+    if (!error) {
+      resetForm();
+      setIsEditing(false);
+    }
   };
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
-    setConfirmation('');
   };
 
   return (
@@ -93,8 +95,16 @@ function Profile() {
                 />
               </div>
             </div>
-            <p className="profile__confirmation">{confirmation}</p>
-
+            {isSuccess && (
+              <p className="profile__confirmation">
+                Изменения были успешно сохранены ✓
+              </p>
+            )}
+            {error && (
+              <span className="profile__error profile__error_visible">
+                Произошла ошибка
+              </span>
+            )}
             {isEditing ? (
               <div className="profile__button">
                 <span
@@ -104,7 +114,7 @@ function Profile() {
                   {[errors.name, errors.email]}
                 </span>
                 <FormButton
-                  disabled={changing}
+                  disabled={!dirty || changing}
                   buttonText="Сохранить"
                   isValid={isValid}
                 />
@@ -114,11 +124,13 @@ function Profile() {
                 <button
                   className="profile__edit"
                   type="button"
+                  disabled={changing}
                   onClick={handleEditClick}>
                   Редактировать
                 </button>
                 <button
                   type="button"
+                  disabled={changing}
                   className="profile__log-out link"
                   onClick={signOut}>
                   Выйти из аккаунта

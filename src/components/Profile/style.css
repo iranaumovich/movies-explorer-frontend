@@ -80,6 +80,7 @@
   display: none;
   font-size: 11px;
   color: #ff004c;
+  padding-top: 15px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -105,7 +106,7 @@
   cursor: pointer;
 }
 
-.profile__edit:hover {
+.profile__edit:hover:not(:disabled) {
   opacity: 0.7;
 }
 
@@ -117,6 +118,11 @@
   border: 0;
   font-weight: 500;
   text-decoration: none;
+}
+
+.profile__edit:disabled,
+.profile__log-out:disabled {
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {

@@ -83,7 +83,11 @@ function Login() {
               }`}>
               {loginError}
             </p>
-            <FormButton buttonText="Войти" isValid={isValid} />
+            <FormButton
+              disabled={loggingIn}
+              buttonText="Войти"
+              isValid={isValid}
+            />
           </form>
           <p className="entrance__footer">
             Ещё не зарегистрированы?{' '}

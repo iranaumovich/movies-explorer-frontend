@@ -7,7 +7,7 @@ function ProtectedRouteElement({ element: Component, ...props }) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <Component {...props} />
   ) : (
-    <Navigate to={ROUTES.SIGN_IN} replace />
+    <Navigate to={ROUTES.HOME} replace />
   );
 }
 

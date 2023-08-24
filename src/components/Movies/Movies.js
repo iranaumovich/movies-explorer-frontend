@@ -10,6 +10,9 @@ export default function Movies() {
     filteredMovies,
     loading,
     query,
+    savedMovieIds,
+    saveMovie,
+    deleteMovie,
     setQuery,
     toggleFilterShorts,
     filterShorts,
@@ -26,8 +29,11 @@ export default function Movies() {
       <MoviesCardList
         hasError={error}
         movies={filteredMovies}
+        savedMovieIds={savedMovieIds}
         loading={loading}
         searching={query.length > 0}
+        onSave={saveMovie}
+        onDelete={deleteMovie}
       />
     </main>
   );

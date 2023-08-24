@@ -1,66 +1,23 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import MoreButton from '../MoreButton/MoreButton';
 import Preloader from '../Preloader/Preloader';
 import './style.css';
 import useMoviesCardList from '../../hooks/useMoviesCardList';
 import { API_BASE_URL } from '../../utils/environment';
-import mainApi from '../../utils/MainApi';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import CurrentUserContext from '../../utils/CurrentUserContext';
 
-function MoviesCardList({ movies, loading, searching, hasError }) {
+function MoviesCardList({
+  movies,
+  loading,
+  searching,
+  hasError,
+  savedMovieIds,
+  onSave,
+  onDelete,
+}) {
   // хук по расположению карточек на странице
   const { visibleCards, handleButtonClick } = useMoviesCardList(movies);
-  const {
-    currentUser: { savedMovies },
-    setCurrentUser,
-  } = useContext(CurrentUserContext);
-  const [savedMovieIds, setSavedMovieIds] = useState(() =>
-    savedMovies.map(({ movieId }) => movieId),
-  );
-
-  useEffect(() => {
-    setSavedMovieIds(savedMovies.map(({ movieId }) => movieId));
-  }, [savedMovies]);
-
-  const saveMovie = (movie) => {
-    // отправляем запрос в API и создаем дубликат фильма со своим id, записанным в owner
-    mainApi
-      .createSavedMovie(movie)
-      .then((res) => {
-        setCurrentUser((user) => ({
-          ...user,
-          savedMovies: [...user.savedMovies, res],
-        }));
-        setSavedMovieIds((value) => [...value, res.movieId]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const deleteMovie = (id) => {
-    // отправляем запрос в API на удаление сохраненного фильма из базы
-    mainApi
-      .deleteSavedMovie(id)
-      .then(() => {
-        const index = savedMovieIds.findIndex((movieId) => id === movieId);
-
-        setSavedMovieIds((value) => value.toSpliced(index, 1));
-
-        setCurrentUser((user) => {
-          const index = user.savedMovies.findIndex(
-            ({ movieId }) => id === movieId,
-          );
-
-          return { ...user, savedMovies: user.savedMovies.toSpliced(index, 1) };
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   // если фильмы в отфильтрованном массиве есть, то рендерим карточки
   // если массив пустой, то проверяем был ли поиск
@@ -72,7 +29,7 @@ function MoviesCardList({ movies, loading, searching, hasError }) {
           {visibleCards.map((card) => {
             const isFavorite = savedMovieIds.includes(card.id);
             const handleFavoriteClick = () =>
-              isFavorite ? deleteMovie(card.id) : saveMovie(card);
+              isFavorite ? onDelete(card.id) : onSave(card);
             const button = (
               <FavoriteButton
                 onClick={handleFavoriteClick}

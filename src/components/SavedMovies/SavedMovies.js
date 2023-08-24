@@ -9,6 +9,7 @@ export default function SavedMovies() {
     loading,
     query,
     setQuery,
+    deleteMovie,
     toggleFilterShorts,
     filterShorts,
   } = useSavedMovies();
@@ -24,6 +25,7 @@ export default function SavedMovies() {
         movies={filteredMovies}
         loading={loading}
         searching={query.length > 0}
+        onDelete={deleteMovie}
       />
     </main>
   );

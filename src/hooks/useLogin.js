@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { login as loginRequest, getCurrentUser } from '../utils/auth';
 import { ROUTES } from '../utils/environment';
@@ -7,6 +7,7 @@ import CurrentUserContext from '../utils/CurrentUserContext';
 
 export default function useLogin() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { setCurrentUser } = useContext(CurrentUserContext);
   const [error, setError] = useState('');
   const [loggingIn, setLoggingIn] = useState(false);
@@ -59,7 +60,7 @@ export default function useLogin() {
         .then(() => mainApi.getSavedMovies())
         .then(({ data }) => {
           setCurrentUser((user) => ({ ...user, savedMovies: data }));
-          navigate(ROUTES.MOVIES, { replace: true });
+          navigate(pathname, { replace: true });
         })
         .catch((err) => {
           console.log(err.message);

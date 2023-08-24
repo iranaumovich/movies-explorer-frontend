@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import Logo from '../../images/logo.svg';
 import TextField from '../TextField/TextField';
 import FormButton from '../FormButton/FormButton';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { EMAIL_PATTERN, ROUTES } from '../../utils/environment';
 import useRegister from '../../hooks/useRegister';
+import CurrentUserContext from '../../utils/CurrentUserContext';
 
 function Register() {
+  const { currentUser } = useContext(CurrentUserContext);
   const { register, registering, error: registerError } = useRegister();
   const { values, handleChange, errors, isValid } = useFormAndValidation({
     name: '',
@@ -25,6 +27,10 @@ function Register() {
     const { name, email, password } = values;
 
     register(name, email, password);
+  }
+
+  if (currentUser.loggedIn) {
+    return <Navigate to={ROUTES.HOME} />;
   }
 
   return (
