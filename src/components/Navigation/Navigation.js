@@ -1,6 +1,7 @@
-import React from "react";
-import "./style.css";
-import { Link, useLocation } from "react-router-dom";
+import React from 'react';
+import './style.css';
+import { Link, useLocation } from 'react-router-dom';
+import { ROUTES } from '../../utils/environment';
 
 function Navigation({ isMenuOpen }) {
   const { pathname } = useLocation();
@@ -10,35 +11,32 @@ function Navigation({ isMenuOpen }) {
       <div className="navigation__menu">
         {isMenuOpen && (
           <Link
-            to="/"
+            to={ROUTES.HOME}
             className={`navigation__link ${
-              pathname === "/" ? "navigation__link_active" : ""
-            } link`}
-          >
+              pathname === ROUTES.HOME ? 'navigation__link_active' : ''
+            } link`}>
             Главная
           </Link>
         )}
         <Link
-          to="/movies"
+          to={ROUTES.MOVIES}
           className={`navigation__link ${
-            pathname === "/movies" ? "navigation__link_active" : ""
-          } link`}
-        >
+            pathname === ROUTES.MOVIES ? 'navigation__link_active' : ''
+          } link`}>
           Фильмы
         </Link>
         <Link
-          to="/saved-movies"
+          to={ROUTES.SAVED_MOVIES}
           className={`navigation__link ${
-            pathname === "/saved-movies" ? "navigation__link_active" : ""
-          } link`}
-        >
+            pathname === ROUTES.SAVED_MOVIES ? 'navigation__link_active' : ''
+          } link`}>
           Сохранённые фильмы
         </Link>
       </div>
       <div className="navigation__account">
-        <Link to="/profile" className="navigation__account-link link">
+        <Link to={ROUTES.PROFILE} className="navigation__account-link link">
           <p className="navigation__account-text">Аккаунт</p>
-          <span className="navigation__account-icon"></span>
+          <span className="navigation__account-icon" />
         </Link>
       </div>
     </nav>

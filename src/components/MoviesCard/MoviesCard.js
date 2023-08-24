@@ -1,21 +1,19 @@
-import React from "react";
-import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
-import DeleteButton from "../DeleteButton/DeleteButton.js";
-import "./style.css";
+import React from 'react';
+import './style.css';
+import getTimeFromMins from '../../utils/utils';
 
-function MoviesCard({ saved, alt, src }) {
+function MoviesCard({ title, time, image, button }) {
   return (
     <div className="movies-card">
       <div className="movies-card__header">
         <div className="movies-card__description">
-          <h2 className="movies-card__title">33 слова о дизайне</h2>
-          <p className="movies-card__time">1ч 47мин</p>
+          <h2 className="movies-card__title">{title}</h2>
+          <p className="movies-card__time">{getTimeFromMins(time)}</p>
         </div>
-        {saved ? <DeleteButton /> : <FavoriteButton />}
+        {button}
       </div>
-
       <div className="movies-card__image-container">
-        <img className="movies-card__image" src={src} alt={alt} />
+        <img className="movies-card__image" src={image} alt={title} />
       </div>
     </div>
   );

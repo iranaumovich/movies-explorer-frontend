@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
 function Portfolio() {
   return (
@@ -10,30 +10,27 @@ function Portfolio() {
           <a
             className="portfolio__link link"
             href="https://iranaumovich.github.io/how-to-learn"
-            target="blank"
-          >
+            target="blank">
             <p className="portfolio__link-text">Статичный сайт</p>
-            <span className="portfolio__link-arrow"></span>
+            <span className="portfolio__link-arrow" />
           </a>
         </li>
         <li className="portfolio__list-item">
           <a
             className="portfolio__link link"
             href="https://iranaumovich.github.io/russian-travel"
-            target="blank"
-          >
+            target="blank">
             <p className="portfolio__link-text">Адаптивный сайт</p>
-            <span className="portfolio__link-arrow"></span>
+            <span className="portfolio__link-arrow" />
           </a>
         </li>
         <li className="portfolio__list-item">
           <a
             className="portfolio__link link"
             href="https://tsupryk.mesto.nomoreparties.sbs"
-            target="blank"
-          >
+            target="blank">
             <p className="portfolio__link-text">Одностраничное приложение</p>
-            <span className="portfolio__link-arrow"></span>
+            <span className="portfolio__link-arrow" />
           </a>
         </li>
       </ul>

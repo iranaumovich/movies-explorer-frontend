@@ -1,7 +1,7 @@
-import React from "react";
-import aboutMePhoto from "../../images/photo.jpg";
-import Portfolio from "../Portfolio/Portfolio";
-import "./style.css";
+import React from 'react';
+import aboutMePhoto from '../../images/photo.jpg';
+import Portfolio from '../Portfolio/Portfolio';
+import './style.css';
 
 function AboutMe() {
   return (
@@ -26,8 +26,7 @@ function AboutMe() {
           <a
             href="https://github.com/iranaumovich"
             target="blank"
-            className="about-me__link link"
-          >
+            className="about-me__link link">
             Github
           </a>
         </div>

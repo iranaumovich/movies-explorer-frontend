@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import Navigation from "../Navigation/Navigation";
+import React, { useEffect } from 'react';
+import Navigation from '../Navigation/Navigation';
 
-import "./style.css";
+import './style.css';
 
 function SideBar() {
   useEffect(() => {
-    document.body.classList.add("body_noscroll");
+    document.body.classList.add('body_noscroll');
 
     return () => {
-      document.body.classList.remove("body_noscroll");
+      document.body.classList.remove('body_noscroll');
     };
   }, []);
 

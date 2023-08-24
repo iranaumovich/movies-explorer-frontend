@@ -4,7 +4,7 @@
   border: none;
   border-radius: 3px;
   background-color: hsl(148, 74%, 52%);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
@@ -15,8 +15,8 @@
 }
 
 .form-button:disabled {
-  background-color: #F8F8F8;
-  color: #C2C2C2;
+  background-color: #f8f8f8;
+  color: #c2c2c2;
   cursor: auto;
 }
 

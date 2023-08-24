@@ -1,5 +1,5 @@
 .techs {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .techs__container {
@@ -31,7 +31,7 @@
   margin: 0;
   width: 84px;
   height: 57px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   border-radius: 10px;
   font-size: 12px;
   letter-spacing: -0.48px;
@@ -48,7 +48,6 @@
   margin: 0 auto;
   margin-top: 26px;
 }
-
 
 @media screen and (min-width: 768px) {
   .techs__container {

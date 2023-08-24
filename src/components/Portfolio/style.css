@@ -9,7 +9,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .portfolio__list {
@@ -21,9 +21,8 @@
 .portfolio__list-item {
   padding-top: 30px;
   padding-bottom: 9px;
-  border-bottom: 1px solid #E6E6E6;
+  border-bottom: 1px solid #e6e6e6;
 }
-
 
 .portfolio__list-item:first-child {
   padding-top: 0;
@@ -36,9 +35,8 @@
 
 .portfolio__link {
   display: flex;
-  justify-content:space-between;
-  
-  
+  justify-content: space-between;
+
   position: relative;
   text-decoration: none;
   color: #000000;
@@ -109,6 +107,3 @@
     letter-spacing: -1.2px;
   }
 }
-
-
-

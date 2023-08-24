@@ -1,19 +1,11 @@
-import { ReactComponent as Icon } from "../../images/fav-button.svg";
-import { ReactComponent as IconActive } from "../../images/fav-button_active.svg";
-import "./style.css";
-import React from "react";
+import React from 'react';
+import { ReactComponent as Icon } from '../../images/fav-button.svg';
+import { ReactComponent as IconActive } from '../../images/fav-button_active.svg';
+import './style.css';
 
-function FavoriteButton() {
-  const [active, setActive] = React.useState(false);
-
+function FavoriteButton({ onClick, active }) {
   return (
-    <button
-      className="favorite-button"
-      type="button"
-      onClick={() => {
-        setActive(true);
-      }}
-    >
+    <button className="favorite-button" type="button" onClick={onClick}>
       {active ? <IconActive /> : <Icon />}
     </button>
   );

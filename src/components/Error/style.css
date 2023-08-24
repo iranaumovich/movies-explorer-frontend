@@ -26,7 +26,10 @@
 
 .page-error__link {
   text-decoration: none;
-  color: #2BE080;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: #2be080;
   font-size: 12px;
 }
 

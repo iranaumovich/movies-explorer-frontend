@@ -1,13 +1,22 @@
-import React from "react";
-import movieLogo from "../../images/logo.svg";
-import Navigation from "../Navigation/Navigation";
-import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import movieLogo from '../../images/logo.svg';
+import Navigation from '../Navigation/Navigation';
+import CurrentUserContext from '../../utils/CurrentUserContext';
+import './style.css';
+import { ROUTES } from '../../utils/environment';
 
-function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
+function Header({ isMenuOpen, onBurgerClick }) {
+  const { currentUser } = useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate(ROUTES.SIGN_IN);
+  };
+
   let container = null;
 
-  if (loggedIn) {
+  if (currentUser.loggedIn) {
     container = (
       <>
         <div className="header__logged-account header__logged-account_type_desktop">
@@ -16,11 +25,10 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
 
         <div
           className="header__logged-account header__logged-account_type_mobile link"
-          onClick={onBurgerClick}
-        >
+          onClick={onBurgerClick}>
           <span
             className={`header__burger ${
-              isMenuOpen ? "header__burger_active" : ""
+              isMenuOpen ? 'header__burger_active' : ''
             }`}
           />
         </div>
@@ -28,30 +36,28 @@ function Header({ loggedIn, isMenuOpen, onBurgerClick, onLogin }) {
     );
   } else {
     container = (
-      <>
-        <nav className="header__logged-out">
-          <Link to="/signup" className="header__register-link link">
-            Регистрация
-          </Link>
-          <button className="header__button" type="button" onClick={onLogin}>
-            Войти
-          </button>
-        </nav>
-      </>
+      <nav className="header__logged-out">
+        <Link to={ROUTES.SIGN_UP} className="header__register-link link">
+          Регистрация
+        </Link>
+        <button className="header__button" type="button" onClick={handleLogin}>
+          Войти
+        </button>
+      </nav>
     );
   }
 
   return (
-    <header className={`header ${loggedIn ? "header_light-theme" : ""}`}>
+    <header
+      className={`header ${currentUser.loggedIn ? 'header_light-theme' : ''}`}>
       <div className="header__container">
-        <Link to="/">
+        <Link to={ROUTES.HOME}>
           <img
             className="header__logo link"
             src={movieLogo}
             alt="Логотип сервиса по поиску фильмов"
           />
         </Link>
-
         {container}
       </div>
     </header>

@@ -1,5 +1,5 @@
 .header {
-  background-color: #5C5C5C;
+  background-color: #5c5c5c;
   min-height: 74px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .header__button {
-  background-color: #2BE080;
+  background-color: #2be080;
   border: none;
   border-radius: 3px;
   width: 54px;
@@ -69,46 +69,51 @@
   cursor: pointer;
 }
 
-.header__burger, .header__burger::after, .header__burger::before {
+.header__burger,
+.header__burger::after,
+.header__burger::before {
   height: 3px;
   width: 21px;
   position: absolute;
-    background: #000000;
-    margin: 0 auto;
+  background: #000000;
+  margin: 0 auto;
 }
 
 .header__burger {
   top: 9px;
 }
 
-.header__burger::after, .header__burger::before{
+.header__burger::after,
+.header__burger::before {
   content: '';
 }
 
-.header__burger::after{
+.header__burger::after {
   bottom: 9px;
 }
 
-.header__burger::before{
+.header__burger::before {
   top: 9px;
 }
 
-.header__burger_active, .header__burger_active::after, .header__burger_active::before {
+.header__burger_active,
+.header__burger_active::after,
+.header__burger_active::before {
   transition: transform 0.25s ease;
 }
 
-.header__burger_active::before{
+.header__burger_active::before {
   transform: rotate(-45deg);
-	transform-origin: 3px -4px;
+  transform-origin: 3px -4px;
 }
 
 .header__burger_active {
   background-color: transparent;
 }
 
-.header__burger_active::after{
+.header__burger_active::after {
   transform: rotate(45deg);
-	transform-origin: -2px 9px;
+  transform-origin: -2px 9px;
 }
 
 @media screen and (min-width: 768px) {
@@ -139,7 +144,9 @@
     margin-right: 0;
   }
 
-  .header__burger, .header__burger::after, .header__burger::before {
+  .header__burger,
+  .header__burger::after,
+  .header__burger::before {
     height: 3px;
   }
 
